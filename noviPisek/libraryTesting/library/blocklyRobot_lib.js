@@ -522,11 +522,11 @@ var getContext = function(display, infos) {
       for (var property in initItem) {
          item[property] = initItem[property];
       }
+      this.resetProperties(item);
+
       if(!("value" in item)){
          item.value = 0;
       }
-
-      this.resetProperties(item);
       
       if (!("offsetX" in item)) item.offsetX = 0;
       if (!("offsetY" in item)) item.offsetY = 0;
@@ -2002,6 +2002,7 @@ var robotEndConditions = {
                   found = true;
                   for(var ik = 0; ik < keys.length; ik++) {
                      var key = keys[ik];
+                     console.log(i, j, items1[i][key], items2[j][key]);
                      if(items1[i][key] != items2[j][key]) found = false;
                   }
                }

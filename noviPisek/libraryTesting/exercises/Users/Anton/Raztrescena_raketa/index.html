@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Luna: raztrescena raketa</title>
+       <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-nested-marbles/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "KSpenko",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+	  
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Raztreščena raketa</h1>
+		 
+         <div id="taskContent" style="text-align:left;position:relative">
+            <div id="taskIntro" style="width: 100%">
+			
+               <p class = "easy">
+                  Robot je naletel na razbitine rakete, ki se je raztreščila ob zasilnem pristanku. Pomagaj robotu zbrati razibitne, da lahko raketo popravi in zapusti Luno. Robot dele rakete pobere, ko se premakne na polje z njimi. 
+				  </p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

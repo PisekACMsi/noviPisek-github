@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lov na zastavo</title>
+	    <!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-while-marbles -->
+        <script>
+            window.stringsLanguage = 'sl';
+        </script>
+        <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+        <script class="remove" type="text/javascript">
+            var modulesPath = '../../../../_common/modules/';
+            importModules([
+                'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+                'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+                'taskStyles-0.1']);
+            // set Blockly as default language when none is specified through ?language=
+            importLanguageModules('blockly');
+        </script>
+		<script class="remove" type="text/javascript" src="blocklyTabornik_lib.js" id="blocklyPisek_lib"></script>
+        <script class="remove" type="text/javascript">
+            var json = {
+                "id": "http://castor-informatique.fr/questions/algorea_training/training-while-marbles/",
+				"language": "sl",
+				"version": "sl.01",
+				"authors": "Luka Čušin",
+				"translators": [],
+				"license": "",
+				"taskPathPrefix": "",
+				"modulesPathPrefix": "",
+				"browserSupport": [],
+				"fullFeedback": true,
+				"minWidth": "auto"
+			};
+        </script>
+	 
+		
+		<!-- manjkajo se Pill in Platform -->
+		 
+        <script type="text/javascript" src="task.js"></script>
+    </head>
+   
+    <body onresize="task.displayedSubTask.updateScale()">
+        <div id="taskIntro" style="width: 100%">
+            <h1>Lov na zastavo</h1>
+
+            <div id="tabsContainer"></div>
+            <div id="taskContent">
+                <div id="taskIntro">
+                    Taborniki so dobili nalogo, da v gozdu poiščejo zastavo, 
+					ki jo bodo obesili pred svojim šotorom. Tine je dobil navodila, 
+					kako jo najti: V gozdu hodi naravnost, 
+					ko prideš do rdeče markacije pa se premakni po poti navzgor. Pot je dolga 12 korakov.
+                </div>
+                <div id="gridContainer"></div>
+                <div id="blocklyLibContent"></div>
+            </div>
+
+        </div><!-- task -->
+    </body>
+</html>
+ 

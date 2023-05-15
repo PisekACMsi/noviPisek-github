@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Pacman</title>
+    <script>
+        window.stringsLanguage = 'sl';
+    </script>
+    <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+    <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../_common/modules';
+        importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'grid-1.0', 'raphaelButton-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'jschannel']);
+    </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2017/2017-FR-06-pacman/",
+          "language": "sl",
+          "version": "fr.01",
+          "authors": "Arthur Charguéraud, Mathias Hiron, Nir Lavee, Aleš Poklukar",
+          "translators": [],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+      var taskStrings = {
+            success: "Bravo, uspelo ti je&nbsp;!",
+            error: "Piška je ujel duh, zadnji korak lahko razveljaviš ali pa začneš ponovno!", //&quot;Recommencer&quot;
+            undoOption: "Ponovi prejšnji korak.",
+            restartOption: "Poskusi ponovno!",
+            partial: "Pišek je ujet!<br> Zadnji korak lahko razveljaviš ali pa začneš ponovno!",
+            // DEPRECATD invalid: "Castor ne peut pas se déplacer sur une case grise.",
+            livesLeft: function(lives) {
+               return "Življenja :<br>" + lives;
+            },
+            livesFeedback: function(livesLost, livesLeft) {
+               return "";
+               //return "Castor a perdu " + livesLost + " vie(s). Il lui reste " + livesLeft + " vie(s).";
+            }
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim_container table {
+            margin: auto;
+         }
+         #anim {
+            display: inline-block;
+         }
+         #feedback {
+            height: 2em;
+            margin-top: 0.5em;
+            margin-bottom: 0.1em;
+            text-align: center;
+            font-weight: bold;
+            color: red; 
+         }
+         #controlsContainer {
+            text-align: center;
+            padding-left: 20px;
+         }
+         #controlsContainer input {
+            min-width: 80px;
+            padding: 10px;
+         }
+         #arrowsTable td {
+            width: 30px;
+            height: 30px;
+         }
+         .livesStatus {
+            margin-top: 30px;
+            font-size: 24px;
+            display: none;
+         }
+         #restart {
+            padding: 10px;
+         }
+      </style>
+   </head>
+   <body>
+
+      <div id="task">
+         <h1>Pišek in labirint</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+             <p>
+               V Piškovi deželi so se kar na enkrat pojavili duhovi. Pišek se jim mora izogniti, zato pelji Piška v njegovo gnezdo, ne da bi ga ujel duh. </p>
+             <p> Piška lahko premikaš s klikom na mrežo ali pa s tipkami na tipkovnici. 
+             </p>
+             <div id="anim_container">
+               <table>
+                  <tr>
+                     <td>
+                        <div id="anim"></div>
+                     </td>
+                     <td id="controlsContainer">
+                        <input type="button" id="undo" value="Razveljavi korak" />
+                        <br>
+                        <div class="livesStatus"></span>
+                     </td>
+                  </tr>
+               </table>
+               <div id="feedback"></div>
+               <input type="button" id="restart" value="Poskusi ponovno" />
+            </div>
+            <img src="icon.png" style="display:none">
+            <img src="castor.png" style="display:none">
+            <img id="image_ghost1" src="ghost1.png" style="display:none">
+            <img id="image_ghost2" src="ghost2.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Solution</h2>
+   
+   
+            <style>
+            .table-sol img {
+               width: 240px;
+            }
+            .table-sol td {
+               width: 250px;
+               padding-bottom: 20px;
+               vertical-align: bottom;
+            }
+            .table-sol p {
+               margin: 0px 0px 5px 0px;
+            }
+            </style>
+        
+            <div class="easy">
+                  <table class="table-sol"><tr>
+               <td>
+                  <p>Le but est de piéger le fantôme.</p>
+                  <img src="Sol_easy_1.png">
+               </td>
+               <td>
+                  <p>On l'attire d'abord vers la droite.</p>
+                  <img src="Sol_easy_2.png">
+               </td>
+               <td>
+                  <p>Puis on repart vers la gauche.</p>
+                  <img src="Sol_easy_3.png">
+               </td>
+               </tr>
+               <tr>
+               <td>
+                  <p>On peut alors descendre.</p>
+                  <img src="Sol_easy_4.png">
+               </td>
+               <td>
+                  <p>Et on a gagné !</p>
+                  <img src="Sol_easy_5.png">
+               </td>
+               </tr>
+               </table>
+            </div>
+
+                      
+
+         <h2>C'est de l'informatique !</h2>
+            
+            <p>Dans ce sujet, il fallait faire de la <b>rétro-ingénierie</b> (revers engineering, en anglais), afin de déduire le comportement de déplacement d'un fantôme. Un fantôme se dirige toujours dans la direction de Castor. C'est une manière plutôt efficace en général d'atteindre sa cible, sauf bien sûr lorsqu'il y a des obstacles. Dans ce sujet, il fallait justement exploiter les obstacles pour arriver à coincer le fantôme et ensuite pouvoir le prendre de vitesse.</p>
+
+	  </div> <!-- task-solution -->
+   </body>
+</html>

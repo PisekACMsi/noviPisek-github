@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+   <head>
+		<meta charset="utf-8">	<!-- določimo način kodiranja znakov v besedilu naloge -->
+		<title>ime_mape_naloge</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
+		<script>
+			window.stringsLanguage = 'sl'; //izberemo jezik za besedila ukazov in sporočil
+		</script>
+			
+		<!-- Tukaj kličemo knjižnice potrebne za delovanje spletne strani -->
+		<script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script> 
+		<!--  <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script> -->
+		<script class="remove" type="text/javascript">
+			var modulesPath = '../../../_common/modules/'
+			importModules([
+				'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+				'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+				'taskStyles-mobileFirst'/*'taskStyles-0.1'*/ ]);
+			importLanguageModules('blockly'); //nastavimo programski jezik Blockly
+		</script>
+			
+		<!-- Tukaj vodimo evidenco o nalogi -->
+		<script class="remove" type="text/javascript">
+			var json = {
+				"id": "",						//url naloge
+				"language": "sl",
+				"version": "sl.01",
+				"authors": "",				//avtor
+				"translators": [],
+				"license": "",
+				"taskPathPrefix": "",
+				"modulesPathPrefix": "",
+				"browserSupport": [],
+				"fullFeedback": true,
+				"minWidth": "auto"
+			};
+		</script>
+			
+		<!-- Tukaj povozimo knjižnico, ki hrani prevode ukazov in sporočil -->
+		<script class="remove" type="text/javascript" src="blocklyTurtle_lib.js" id="blocklyTurtle_lib"></script>
+		<!-- Tukaj kličemo datoteko, kjer definiramo problem naloge -->			
+		<script type="text/javascript" src="turtle_task.js"></script>
+    </head>
+    
+	<body onresize="task.displayedSubTask.updateScale()">
+		<div id="task">
+            <h1>Ime naloge</h1>  <!-- Naslov naloge -->
+			<div id="tabsContainer"></div>
+			<div id="taskContent">
+				<div id="taskIntro"> <!-- Besedilo naloge -->
+					<img class="basic medium" src="smiley.png" style="float:left;margin:5px;width:40px;">
+					<p>
+						To besedilo bo vidno pri vseh težavnostih.
+					</p>
+					<img class="easy" src="easy.png">
+					
+					<div class="medium hard">
+						<button type="button" onclick="funkcija(this.id)"  id="1">Namig1</button>
+						<p id="button1" style="display:none">
+							Ta namig lahko vidimo samo pri srednji ali težki težavnosti.
+						</p>
+					</div>
+					
+					<div class="hard">
+						<p>
+							To besedilo je vidno samo pri težki težavnosti.
+						</p>
+						<button type="button" onclick="funkcija(this.id)"  id="2">Namig2</button>
+						<p id="button2" style="display:none">
+							Ta namig vidimo lahko samo pri težki težavnosti.
+						</p>
+					</div>
+					
+					<button class="hard" onclick="checkAnwser(this.id)" id="3" style="margin: 15px; text-align: center;">Prikaži kodo</button>
+					
+					<script>
+					function funkcija(n) {
+						var x = document.getElementById(("button").concat(n));
+						if (x.style.display === "none") x.style.display = "block";
+						else x.style.display = "none";
+						}
+					</script>
+					<script>
+					function checkAnwser(num) {
+						var exampleA = {
+							blockly:  '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="8ZL:q#HC4eR_U7}6.(ZN" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="controls_repeat_ext" id="101"><value name="TIMES"><block type="math_number" id="102"><field name="NUM">8</field></block></value></block></next></block></xml>'
+						};
+						if (num==3)   task.displayedSubTask.loadExample(exampleA);
+					}
+					</script>
+				
+				</div>
+				<div id="gridContainer"></div>
+				<div id="blocklyLibContent"></div>
+			</div>
+		</div>
+    </body>
+</html>

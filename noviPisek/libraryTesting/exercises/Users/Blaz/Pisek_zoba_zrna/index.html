@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Pišek zoba zrna</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-while-marbles -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+        <script>
+        var modulesPath = '../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+            var json = {
+                "id": "http://castor-informatique.fr/questions/algorea_training/training-while-marbles/",
+				"language": "sl",
+				"version": "sl.01",
+				"authors": "KSpenko",
+				"translators": [],
+				"license": "",
+				"taskPathPrefix": "",
+				"modulesPathPrefix": "",
+				"browserSupport": [],
+				"fullFeedback": true,
+				"minWidth": "auto"
+			};
+        </script>
+	  
+        <img src="green_robot.png" style="display:none" />
+		
+        <img src="obstacle.png" style="display:none" />
+        <img src="green.png" style="display:none" />
+		
+        <img src="marble.png" style="display:none" />
+        <img src="hole.png" style="display:none" />
+        <img src="pill.png" style="display:none" />
+		
+		<!-- manjkajo se Pill in Platform -->
+		 
+        <script type="text/javascript" src="task.js"></script>
+    </head>
+   
+    <body onresize="task.displayedSubTask.updateScale()">
+        <div id="taskIntro" style="width: 100%">
+            <h1>Pišek zoba zrna</h1>
+
+            <div id="tabsContainer"></div>
+            <div id="taskContent">
+                <p>
+                    Pišek se prebudi v zaspano jutro. Lačen se ozira za hrano. Popelji piška tako, da bo pozobal obe zrni.
+					</p>
+				<p>
+Pišek je zelo lačen, zato zrno pozoba takoj, ko ga najde.</p>
+				<p>
+Naloga ima več možnih rešitev. LOL3
+                </p>
+
+                <img class="easy" src="../../../../Slovenia/graphics/characters/pisek.png">
+
+                <div id="gridContainer"></div>
+                <div id="blocklyLibContent"></div>
+            </div>
+
+        </div><!-- task -->
+    </body>
+</html>
+ 

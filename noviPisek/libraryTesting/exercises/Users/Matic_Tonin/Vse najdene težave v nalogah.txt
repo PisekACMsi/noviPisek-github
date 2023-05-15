@@ -1,0 +1,16 @@
+Cebelica nabira nektar: /	Manjkajo grafike za čebelico, nektar in drevo
+
+Lacni pisek na polju: ALL GOOD
+	
+Lili nabira rozice: 	    -Manjka možnost pobiranja 2 različnih predmetov (prepoznavanje preko id, kateri je kateri);	Manjkajo grafike za rože
+
+Najboljši razred: 	    -Manjkajo delčki za uresničitev printer_task.js
+
+Pobiranje keglov: ALL GOOD
+
+Pobiranje keglov z ograjo: -MANJKA FUNKCIJA ZA robotEndConditions.checkGreenArea, da bi preveril al se vrne na začetek.
+				   -Če daš gumbu, da je category: {'button':true, 'obstacle':true} javi takoj napako, "Pazi ovira.", tudi če ni nobene ovire razen Gumba na mreži.
+				   -Če gumbu spremeniš value v oviro po tem ko ga prižgeš, javi isto napako takoj za prižigom gumba, program teče dalje
+				   -Če daš coin kategorijo category: {'coin':true, 'obstacle':true}, ko stopi na gumb javi napako "Pazi ovira". 
+
+Tacko in skrivalnice:	   -Manjka ponovno pogoj, da pride do Miha (checkGreeenArea v prejšnji knjižnjici). 

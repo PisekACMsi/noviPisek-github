@@ -1,0 +1,2 @@
+Sat naj zamenja barvo ko je poln.
+Začetna postavitev je opisana v PDFju.

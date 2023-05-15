@@ -1,0 +1,3 @@
+Manjkajo slike za drevesa, gol. Delčki bi morali biti desno levo itd., ne pa severno južno...Posamični delčki brez dropdowna
+ali check everyturn dela? Če opraviš nalogo bi ti moralo javiti to še pred iztekom programa.
+For zanka šteje za 2 delčka.

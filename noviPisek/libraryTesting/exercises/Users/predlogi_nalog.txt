@@ -1,0 +1,59 @@
+Naloge za realizacijo
+V prvem stolcpu je podano ime naloge in v kateri mapi se nahaja. Drugi stolpec pove tip naloge (glede na izbiro blocky_..._lib.js (Robot, Turtle=Risanje, Writer=Printer). Tretji stolpec je napisano, kdo je nalogo realiziral in v kateri mapi Users se nahaja.
+
+
+SPLETNA UČILNICA:
+4 6 zacetni Lilinabirarozice Sabina SircaFile                       	|	Matic Tonin
+4 6 napredni Lacni Pisek na polju Martin RisticFile                 	|	Matic Tonin
+4 6 napredni PisekZalivaRoze Maja KosmacFile                        	|	Gregor Kuhelj (iz spletne)
+4 6 napredni Kuzagredomov SabinaSircaFile                           	|	Gregor Kuhelj (iz spletne)
+4 6 napredni NogometniTrening Herga AljaFile                        	|	Žiga Černe
+SŠN Kvadrat iz kvadratov LokarFile                  		  RISANJE   |
+SŠZ Pisek na orientacijskem tekmovanju LokarFile                    	|	Bernard Sovdat (iz spletne)
+OŠ79Z Lokar Čebelica nabira nektarFile                              	|	Matic Tonin
+7-9 zac napr tacko in skrivalnice BelaKocarFile                     	|	Matic Tonin                                                 
+7-9 zac napr najboljsi razred BelaKocarFile                         	|	Matic Tonin
+4-6N Oglata spirala - SušnikFile                      	  RISANJE   |   
+Napredni 4. - 6. ali 7. - 9., Veriga osemkotnikov, SušnikFile RISANJE	|   
+Predlog - POT ČEZ GLOBEL - SušnikFile                               	|	Žiga Černe                       
+Predlog - 9-kraka zvezda - SušnikFile                         RISANJE	|   
+Predlog - začetni 4. - 9. metuljček - SušnikFile              RISANJE   |             
+46N - Pisek malica - LokarFile                                      	|	Matic Tonin
+SŠZ - Bomboni - Matija LokarFile                                    	|	Matic Tonin
+Preveri in pobarvajFile                                           	|TO DO (Nisem prepričan, če so vsi delčki-Matic Tonin)
+VzorecNaMrezi MatijaLokar 79NapFile                       WRITER+ROBOT	|TO DO (Nisem prepričan, če so vsi delčki-Matic Tonin)
+SŠZ - Čebelica Maja 3 Matija LokarFile                              	|	Žiga Černe 
+OŠ79Z - Čebelica Maja - Matija LokarFile                            	|	Žiga Černe
+OŠ46Z - Čebelica Maja -- Matija LokarFile                           	|	Žiga Černe
+OŠ79Z - Praprapradedek - Matija LokarFile                           	|	Matic Tonin   
+SŠN - Skladišče v Dvojiškoberu - Matija LokarFile                   	|	Matic Tonin
+
+NALOGE-1 DATOTEKA
+4_6_napredni_Kekec_Irena						ROBOT		|TO DO (Nisem prepričan, če so vsi delčki-Matic Tonin)
+4_6-7_9_zacetni_Snezinka_Irena					RISANJE	|		
+4-6_Zacetna_JankoMetka_Mujkic						ROBOT		| TODO Žiga Černe
+4-6N Oglata spirala - Sušnik		ISTA KOT ZGORAJ		RISANJE	|
+4-6N sladoled								WRITER	|
+7-9_nap_Pisek_sadi_gredo_Ostojic					ROBOT		|		
+7-9_zac_napr_geslo_Čelan						WRITER	|
+7-9_zac_napr_najboljsi_razred_BelaKocar ISTA ŽE ZGORAJ	WRITER	|
+7-9_zac_napr_tacko_in_skrivalnice_BelaKocar ISTA KOT ZGORAJ	ROBOT		|
+46napredni_Kozmonavt_mreža						ROBOT		|TO DO (Nisem prepričan, če so vsi delčki-Matic Tonin)
+Naloge_ucenci								ROBOT		|   Žiga Černe
+Napredni 4. - 6. ali 7. - 9., Veriga osemkotnikov, Sušnik ISTA ZGORAJ	|
+KLASIKA-V_okt_2022_1 - Tomaž Kosar – BOŽIČNI OKRASI		RISANJE 	|
+KLASIKA-V_okt_2022_1 - Tomaž Kosar – LEŠNIKI			ROBOT		|
+OŠ79Z_Lokar_Čebelica_nabira_nektar		ISTA KOT ZGORAJ	ROBOT		|
+Predlog - 9-kraka zvezda - SušnikFile     ISTA KOT ZGORAJ   RISANJE	|
+Predlog - POT ČEZ GLOBEL - Sušnik		ISTA KOT ZGORAJ	ROBOT		|
+Predlog - začetni 4. - 9. metuljček - Sušnik ISTA KOT ZGORAJ ROBOT	|
+SŠN_Kvadrat iz kvadratov_Lokar		ISTA KOT ZGORAJ	WRITER	|
+SŠZ_Pisek na orientacijskem tekmovanju_Lokar ISTA KOT ZGORAJ ROBOT	|
+Student_Strbenc_7_9_osnovni						ROBOT		|	    Žiga Černe
+
+NALOGE-2 DATOTEKA
+VPISUJ SPROTI
+Šifrer_Naloga_1         MREŽA | Žiga Černe
+
+
+

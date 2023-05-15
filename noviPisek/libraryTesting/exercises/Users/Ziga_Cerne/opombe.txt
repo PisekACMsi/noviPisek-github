@@ -1,0 +1,6 @@
+Janko in metka - rad bi ustvaril novo kategorijo, ki bi jo senzor zaznaval.
+Kako to naredim. Kako dam senzorju več custom opcij ne da preimenujem kategorijo??
+slika pisek.png ne dela
+
+NalogeUcenci/andrej - Trenutno se prekrivajo tri različna gnezda s tremi vrednostmi, zato da zadovoljijo končnemu pogoju.
+ideja - za vsako gnezdo poglej da so na njem tri jajca.

@@ -35,3 +35,6 @@ Delčki naj bodo posamezni: obrni se levo ter obrni se desno. Ostalih opcoije ne
 čebelicaMajaSŠZ
 šumniki fuj Š naj gre v S, zarad urlja v serverju.
 
+Andrej/pisek_in_gosenica
+Obe end condition funkciji vrneta isto. Vsaka naj vrne svoje ajgaaa.funkciji
+

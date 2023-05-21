@@ -140,7 +140,7 @@ function initTask(subTask) {
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
 			robot0: { img: ["bee.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
-						category: {'robot': true}, },
+						category: {'robot': true}},
 			drevo: { num: 2, img: "vilica.png", zOrder: 2, side: 80, category: {"obstacle":true}, },
 			seme: { num: 3, img: "seed.png", zOrder: 1, category: {"coin":true}, transOrder:0},
 			stopinja: {num: 4, img: ["footprint.png"], zOrder: 1, category: {"colour": true}},

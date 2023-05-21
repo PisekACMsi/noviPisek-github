@@ -943,7 +943,7 @@ var getContext = function(display, infos) {
    context.robot.move = function(dir, amount, callback) {
       var newDir = context.props.dirNames.indexOf(dir);
       var robot = context.getItems(undefined, undefined, {category: 'robot', rank: context.robotRankInUse}).pop();
-
+      console.log(robot);
       var dRow = context.props.delta[newDir][0];
       var dCol = context.props.delta[newDir][1];
       var prevTime = 0;

@@ -24,9 +24,119 @@ function initTask(subTask) {
 				},
 			},
 		},
-		// CUSTOM: here you can override and add new blocks, the same way as in blocklyRobot_lib.js
-		// context is the same object as inside the function "getContext"
-		// strings is equaly the same object string inside "getContext" (is already set to the active language)
+		localBlocks: function(context, strings){
+			// CUSTOM: first you can define functions for blocks, which need to be attached to "context.robot"
+			// this way you can either override existing function definitions from blocklyRobot_lib.js or add new ones.
+			// If you are creating new ones, you need to additionaly do the following things:
+			// - add strings in languageStrings for keys: "label", "code", "description" and optionaly more,
+			// - you need to define the visual design of the block using "customBlocks"
+			// If you are making a new function, good advice, always staring with something that works!!
+			// - 1st copy an existing block from blocklyRobot_lib.js inside here,
+			// - use console.log() and Web Developer Tools to print values in the console, for debugging
+			context.robot.transport = function(mode, callback) { 
+				// CUSTOM we want that the image of robot changes if it picks/drops another robot!
+				var robot = context.getItems(undefined, undefined, {category: 'robot', rank: context.robotRankInUse}).pop();
+			   
+				if(mode == 'pick'){
+					// robot can't pick himself up, exclude himself!
+					var transportables = context.getItems(robot.row, robot.col, {category: 'transportable'}, {rank: context.robotRankInUse}); 
+					if (transportables.length == 0) {
+						throw(strings.errors.nothingToPickUp);
+					}
+			
+					var transItem = transportables.pop();
+					if (!("transOrder" in transItem)) {
+						context.items.splice(transItem.index, 1);
+						context.transporting[robot.rank].push( transItem );
+					}
+					else if(context.transportingValues[robot.rank].length-1 >= transItem.transOrder){
+						throw(strings.errors.alreadyTransporting);
+					}
+					else if(context.transportingValues[robot.rank].length < transItem.transOrder){
+						throw(strings.errors.wrongPickOrder);
+					}
+					else {
+						context.items.splice(transItem.index, 1);
+						context.transportingValues[robot.rank].push( transItem );
+					}  
+					
+					// CUSTOM trigger change on honeycomb
+					var hcombs = context.getItems(robot.row, robot.col, {type: 'sat'});
+					
+					if(hcombs.length > 0 ){
+						var hcomb = hcombs.pop();
+						hcomb.value -= 1;
+						if (context.display) context.redisplayItem(hcomb);	
+					}
+					context.waitDelay(function() {
+						if (context.display) transItem.element.remove();
+						callback();
+					});
+					return;
+				}
+				else if(mode == 'drop'){
+					// TODO
+					if(context.transportingValues[robot.rank].length > 0){
+						var dropItem = context.transportingValues[robot.rank].pop();
+					}
+					else if(context.transporting[robot.rank].length > 0){
+						var dropItem = context.transporting[robot.rank].pop();
+					}
+					else{
+						throw(strings.errors.notTransporting);
+					}
+					
+					context.waitDelay(function() {
+						var preexisting = context.getItems(robot.row, robot.col, {type: 'prah'});
+						context.items.push(dropItem);
+						dropItem.row = robot.row;
+						dropItem.col = robot.col;
+						// CUSTOM trigger change on honeycomb
+						var hcombs = context.getItems(dropItem.row, dropItem.col, {type: 'sat'});
+						if(hcombs.length > 0 ){
+							var hcomb = hcombs.pop();
+							hcomb.value += 1;
+							if (context.display) context.redisplayItem(hcomb);	
+						}
+
+						if (context.display) context.redisplayItem(dropItem);
+						callback();
+					});
+				}
+			};
+			
+			// CUSTOM: here you can specify the visual design of blockly block, the same way as in blocklyRobot_lib.js
+			// this way you can either override the visual design of existing blocks (such as options in dropdown field)
+			// or define design for new blocks
+			/* structure is as follows:
+				{
+					group: [{
+						name: "someName",
+						category: "categoryName",
+						// yieldsValue: optional true: Makes a block with return value rather than simple command
+						// params: optional array of parameter types. The value 'null' denotes /any/ type. For specific types, see the Blockly documentation ([1,2])
+						// handler: optional handler function. Otherwise the function context.group.someName will be used
+						// blocklyJson: optional Blockly JSON objects
+						// blocklyInit: optional function for Blockly.Blocks[name].init
+						//   if not defined, it will be defined to call 'this.jsonInit(blocklyJson);
+						// blocklyXml: optional Blockly xml string, 
+						// 	 you need this if you want to implicitly attach "shadow blocks", check library for examples
+						// codeGenerators: optional object:
+						//   { Python: function that generates Python code
+						//     JavaScript: function that generates JS code
+						//   }
+					}]
+				}
+				[1] https://developers.google.com/blockly/guides/create-custom-blocks/define-blocks
+				[2] https://developers.google.com/blockly/guides/create-custom-blocks/type-checks
+			*/
+			var customBlocks = {	// don't attach it to context!! just return it
+				robot: {
+					tools: [ ],
+				},
+			};
+			return customBlocks;
+		},
 		
 
 		hideControls: {					//gumbi na urejevalniku
@@ -73,7 +183,7 @@ function initTask(subTask) {
 		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "prah"}, {type: "sat"}, "colour", {}, {}) },
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
-		noBorders: false,
+		border: 0.05,
 		backgroundColour: false,
 		backgroundTile: 'tile.png',
 		borderColour: false,
@@ -86,7 +196,7 @@ function initTask(subTask) {
 						category: {'robot': true}, },
 			cvet: { num: 2, img: "flower.png", zOrder: 2, category: {}, },
 			prah: { num: 3, img: "flowerPrah.png", zOrder: 1, category: {'transportable':true}, transOrder:0},
-			sat: {num: 4, img: ["honeycomb1.png", "honeycomb2.png"], zOrder: 1, colour: ['red','green','blue'] },
+			sat: {num: 4, img: ["honeycomb1.png", "honeycomb2.png"], zOrder: 2, colour: ['red','green','blue'] },
 		}, 
 		ignoreInvalidMoves: false,
 	};

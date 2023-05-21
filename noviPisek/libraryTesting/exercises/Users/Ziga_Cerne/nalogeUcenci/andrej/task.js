@@ -69,7 +69,7 @@ function initTask(subTask) {
 		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "gnezdo"}, {type: "jajce"}, "value", {}, {}) },
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
-		noBorders: false,
+		border: 0.05,
 		backgroundColour: false,
 		backgroundTile: 'tile.png',
 		borderColour: false,

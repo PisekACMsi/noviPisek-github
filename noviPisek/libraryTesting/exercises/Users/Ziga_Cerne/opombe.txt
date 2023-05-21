@@ -1,6 +1,34 @@
 Janko in metka - rad bi ustvaril novo kategorijo, ki bi jo senzor zaznaval.
 Kako to naredim. Kako dam senzorju več custom opcij ne da preimenujem kategorijo??
-slika pisek.png ne dela
+slika pisek.png ne dela - REŠENO
 
 NalogeUcenci/andrej - Trenutno se prekrivajo tri različna gnezda s tremi vrednostmi, zato da zadovoljijo končnemu pogoju.
 ideja - za vsako gnezdo poglej da so na njem tri jajca.
+!!! override CheckEndConditions - ali se da narediti čekiranje za več različnih jajc hkrati.
+BUG-testiraj tudi predmete ki se nosijo. - PROBLEM PREDAN VIŠJIM SILAM
+
+!!! Pri vseh naloga zamenjaj noBorders v border:0.05
+
+nalogeUcenci/zana
+Rescale ne dela pravilno. PREDANO VIŠJIM SILAM
+
+pisek_in_zrna
+V nalogi sta dve vrsti plošč. Ali ima pišek zmožnost premikanja tudi gor dol ali samo levo desno
+Spremeni začetno postavitev programa glede na nalogo
+
+pisek_pospravlja_zrna
+Spremeni začetno postavitev programa glede na nalogo
+
+pisek_sadi_gredo
+Ali se da že na za četku napolniti spremenljivko, context.transporting.
+Problem - Pišek mora imeti neskončno semen že takoj na začetku.
+Koda za posajanje semen je moja...LOL
+UPORABI DELČEK CREATE
+
+pisek_na_orientacijskem_tekmovanju
+Trenutno so na številkah postavljeni nevidni kovanci, ter cilj na zadnjem mestu, ali obstaja boljši način za testiranje pravilnosti rešitve???
+
+pot_cez_globel
+Grafika. Glavni junak je mniška ki išče sirček. modra je prepad. Ovira je očitno travnik, miška mora hoditi po označeni poti. Glej PDF
+Delčki naj bodo posamezni: obrni se levo ter obrni se desno. Ostalih opcoije ne potrbujem,
+

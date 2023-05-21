@@ -149,7 +149,7 @@ function initTask(subTask) {
 			robot0: { img: ["pisek.png"], side: 80, nbStates: 9, offsetX: -14, zOrder: 8,
 						category: {'robot': true}, },
 			drevo: { num: 2, img: "vilica.png", zOrder: 2, side: 80, category: {"obstacle":true}, },
-			kamen: { num: 3, img: "kamen.png", zOrder: 1, category: {"marker":true}, transOrder:0},
+			kamen: { num: 3, img: "kamen2.png", zOrder: 1, category: {"marker":true}, transOrder:0},
 			dom: {num: 4, img: ["house.png"], zOrder: 1, category: {"goal": true}},
 		}, 
 		ignoreInvalidMoves: false,

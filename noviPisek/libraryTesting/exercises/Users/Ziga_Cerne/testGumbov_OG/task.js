@@ -35,6 +35,9 @@ function initTask(subTask) {
 			// If you are making a new function, good advice, always staring with something that works!!
 			// - 1st copy an existing block from blocklyRobot_lib.js inside here,
 			// - use console.log() and Web Developer Tools to print values in the console, for debugging
+			
+			
+			
 			context.robot.transport = function(mode, callback) { 
 				// CUSTOM we want that the image of robot changes if it picks/drops another robot!
 				var robot = context.getItems(undefined, undefined, {category: 'robot', rank: context.robotRankInUse}).pop();
@@ -63,16 +66,14 @@ function initTask(subTask) {
 						context.transportingValues[robot.rank].push( transItem );
 					}  
 					
+					
 					context.waitDelay(function() {
-						if (context.display) {
-							// CUSTOM: trigger robot if it picks another robot!!
-							if("robot" in transItem.category){
-								robot.value += 1;
-								context.resetProperties(robot, updateOnly=true);
-								robot.element.attr("src", robot.img);
-							}
-							transItem.element.remove();
+						// CUSTOM: trigger robot if it picks another robot!!
+						if("robot" in transItem.category){
+							robot.value += 1;
+							if (context.display) context.redisplayItem(robot);
 						}
+						if (context.display) transItem.element.remove();
 						callback();
 					});
 					return;
@@ -93,13 +94,12 @@ function initTask(subTask) {
 						context.items.push(dropItem);
 						dropItem.row = robot.row;
 						dropItem.col = robot.col;
-						if (context.display) {
-							context.redisplayItem(dropItem);
-							// CUSTOM: trigger robot if it drops another robot!!
-							if("robot" in dropItem.category){
-								robot.value += 1;
-								context.resetProperties(robot, updateOnly=true);
-								robot.element.attr("src", robot.img);
+						if (context.display) context.redisplayItem(dropItem);
+						// CUSTOM: trigger robot if it drops another robot!!
+						if("robot" in dropItem.category){
+							robot.value -= 1;
+							if (context.display){
+								context.redisplayItem(robot);
 							}
 						}
 						callback();
@@ -227,12 +227,14 @@ function initTask(subTask) {
 		},
 		startingExample: { //vnaprej podana koda ukazov
 			blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="Yx#}`-PvOO]HA4c0m7]F" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="move" id="#=h4ts.82xNCg8fP|qUv"><field name="PARAM_0">S</field><value name="PARAM_1"><shadow type="math_number" id="tWIRT@,lISg5=WB_g{j{"><field name="NUM">10</field></shadow></value></block></next></block><additional>{}</additional></xml>',
+			// blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="Yx#}`-PvOO]HA4c0m7]F" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="move" id="4,KCbSD;_m-pZxtufj95"><field name="PARAM_0">S</field><value name="PARAM_1"><shadow type="math_number" id="CIspNjAYb7a*vulaV1{P"><field name="NUM">2</field></shadow></value><next><block type="controls_repeat_ext" id="xz}GE@0Jjd*qSArjsPK7"><value name="TIMES"><shadow type="math_number" id="tt~vC4c`SoXp*D0{g`g4"><field name="NUM">10</field></shadow></value><statement name="DO"><block type="move" id="WeEDtrj7~6yjk(UWz0-I"><field name="PARAM_0">NW</field><value name="PARAM_1"><shadow type="math_number" id="opp6D`R,=GUHmyGwa.R?"><field name="NUM">2</field></shadow></value><next><block type="move" id="@1V??r6T.~WNU!1eUDFK"><field name="PARAM_0">W</field><value name="PARAM_1"><shadow type="math_number" id="0{K)gjXQYd/@ACLa1Zth"><field name="NUM">2</field></shadow></value><next><block type="move" id="z)fMk;vuUbh5Da[KR*xj"><field name="PARAM_0">SW</field><value name="PARAM_1"><shadow type="math_number" id="wB9]`B@g|8|}GB/1Tm@!"><field name="NUM">2</field></shadow></value><next><block type="move" id="GeZy`Ver;W!z`XSw45r`"><field name="PARAM_0">S</field><value name="PARAM_1"><shadow type="math_number" id="sZB.rV,77Bqvtrj0kOBO"><field name="NUM">2</field></shadow></value><next><block type="move" id="M17`JoUY;BMn/l@i}fsy"><field name="PARAM_0">SE</field><value name="PARAM_1"><shadow type="math_number" id="Hd_3qqIk*y;,]lM_qE@,"><field name="NUM">2</field></shadow></value><next><block type="move" id="k}eq{We-_F/f])5ibq*S"><field name="PARAM_0">E</field><value name="PARAM_1"><shadow type="math_number" id="gu?bUo7P.xnCNvY|6aH#"><field name="NUM">2</field></shadow></value><next><block type="move" id="R/G.u-]Ep6Moi)~0{B}7"><field name="PARAM_0">NE</field><value name="PARAM_1"><shadow type="math_number" id="c1;Ku-whH9kw@[,TwuQK"><field name="NUM">2</field></shadow></value><next><block type="move" id="O9,[~_q4s8-*m-C/wuRr"><field name="PARAM_0">N</field><value name="PARAM_1"><shadow type="math_number" id="QI=mOSVV5;~2s5DK@fCD"><field name="NUM">2</field></shadow></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></next></block></next></block><additional>{}</additional></xml>',
+			// blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="Yx#}`-PvOO]HA4c0m7]F" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="move" id="4,KCbSD;_m-pZxtufj95"><field name="PARAM_0">W</field><value name="PARAM_1"><shadow type="math_number" id="CIspNjAYb7a*vulaV1{P"><field name="NUM">3</field></shadow></value><next><block type="destroy" id="KKQSCxKu;sV}+gJe?9=)"><field name="PARAM_1">obstacle</field><field name="PARAM_0">2</field><next><block type="move" id="XWv:_2Qbckm|{-94@`u,"><field name="PARAM_0">N</field><value name="PARAM_1"><shadow type="math_number" id="oR6vzE-h~{7oseb?hIAf"><field name="NUM">1</field></shadow></value></block></next></block></next></block></next></block><additional>{}</additional></xml>', 
 		},					
 		checkEndEveryTurn: false,		//kako pogosto preverjamo uspešnost rešitve
-		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false) },
+		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "robot"}, {}, exist=false) },
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
-		noBorders: false,
+		border: 0.05,
 		backgroundColour: false,
 		backgroundTile: 'tile.png',
 		borderColour: false,
@@ -247,7 +249,7 @@ function initTask(subTask) {
 						category: {'robot': true}, },
 			obstacle: { num: 2, img: "obstacle1.png",  zOrder: 8, category: {'obstacle':true}, },
 			button: {num: 4, img: ["pressure_off.png","pressure_on.png"], id:1, zOrder: 1, category: {'button':true}, },
-			door: {num: 6, img: ["door_a.png", "door_b.png"], id:2, zOrder: 1, category: [{'transportable':true}, {'obstacle':true}], },
+			door: {num: 6, img: ["door_a.png", "door_b.png"], id:1, zOrder: 1, category: [{'transportable':true}, {'obstacle':true}], },
 		}, 
 		ignoreInvalidMoves: false,
 	};
@@ -258,10 +260,10 @@ function initTask(subTask) {
 				tiles: [
 					[1, 1, 1, 1, 1, 1, 1],
 					[1, 1, 1, 4, 1, 1, 1],
-					[1, 1, 1, 4, 1, 1, 1],
-					[1, 1, 1, 1, 6, 1, 1],
-					[1, 1, 1, 4, 1, 1, 1],
 					[1, 1, 1, 1, 1, 1, 1],
+					[1, 1, 1, 4, 6, 1, 1],
+					[1, 1, 1, 1, 1, 1, 1],
+					[1, 1, 1, 4, 1, 1, 1],
 					[1, 1, 1, 1, 1, 1, 1],
 					[1, 1, 1, 1, 1, 1, 1],
 					[1, 1, 1, 1, 1, 1, 1],

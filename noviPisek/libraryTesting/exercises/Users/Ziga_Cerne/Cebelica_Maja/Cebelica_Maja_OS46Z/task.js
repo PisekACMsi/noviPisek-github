@@ -198,7 +198,7 @@ function initTask(subTask) {
 						category: {'robot': true}, },
 			cvet: { num: 2, img: "flower.png", zOrder: 2, category: {}, },
 			prah: { num: 3, img: "flowerPrah.png", zOrder: 1, category: {'transportable':true}, transOrder:0},
-			sat: {num: 4, img: ["honeycomb1.png", "honeycomb2.png", "honeycomb2.png", "honeycomb2.png"], zOrder: 1, },
+			sat: {num: 4, img: ["honeycomb1.png", "honeycomb2.png", "honeycomb2.png", "honeycomb2.png"], zOrder: 2, },
 		}, 
 		ignoreInvalidMoves: false,
 	};

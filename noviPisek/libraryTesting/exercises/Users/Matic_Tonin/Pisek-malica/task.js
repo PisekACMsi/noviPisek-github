@@ -58,7 +58,7 @@ function initTask(subTask) {
 		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false).checkReachGreenArea(context, lastTurn)},
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
-		noBorders: false,
+		border: 0.05,
 		backgroundColour: false,
 		backgroundTile: 'tile.png',
 		borderColour: false,

@@ -23,14 +23,15 @@ function initTask(subTask) {
 					},
 					tools: {
 						bool: {
-							   green: 'avtobusna postaja',
-							   transportable: "gosenica"	
+							   transportable: "kovanec"	
 						},
 					},
 				},
 				messages:{
 					itemsDontCoincide: "REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE",
-					itemsCoincide: "Super robot je dosegel cilj",
+					itemsCoincide: "Robot je dosegel cilj",
+					itemsExist: "Robot ni pobral vseh vzorcev",
+					itemsDontExist: "Kamenčki grejo brrrrrrrrrrrrrrrr",
 				},
 			},
 		},
@@ -55,7 +56,6 @@ function initTask(subTask) {
                         "name": "PARAM_1", 
                         "options": [
 							[strings["options"]["tools"]["bool"]["transportable"], "transportable"],
-							[strings["options"]["tools"]["bool"]["green"], "green"],
                         ],
                      },
                      {
@@ -112,14 +112,14 @@ function initTask(subTask) {
 			},
 		},
 		startingExample: { //vnaprej podana koda ukazov
-			blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="Yx#}`-PvOO]HA4c0m7]F" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="controls_repeat_ext" id="~ax3O=s`Kz{4(.7gUJwH"><value name="TIMES"><shadow type="math_number" id="H81lKCg+H*9/+s36=e@Q"><field name="NUM">4</field></shadow></value><statement name="DO"><block type="moveSimple" id="wWI4g5~)ZJ!8|b=dEt4h"><field name="PARAM_0">W</field></block></statement><next><block type="controls_repeat_ext" id="(URq;;j[p9VNT[ea`pF~"><value name="TIMES"><shadow type="math_number" id="/GH[?+wHB67zM9yjl/tr"><field name="NUM">5</field></shadow></value><statement name="DO"><block type="controls_if" id=":*J}.@iqsE#N*6`42bwb"><value name="IF0"><block type="sensorBool" id="ey2WM.o)`bFRkR*9/vCc"><field name="PARAM_0">under</field><field name="PARAM_2">category</field><field name="PARAM_1">transportable</field></block></value><statement name="DO0"><block type="transport" id="*GH1~Jr,Hp73@nUGQmpL"><field name="PARAM_0">pick</field></block></statement><next><block type="moveSimple" id=",iX!q2E*edM#/S;T5!fu"><field name="PARAM_0">N</field></block></next></block></statement><next><block type="controls_repeat_ext" id="-#{el*@ZlfwO)vnv4H{,"><value name="TIMES"><shadow type="math_number" id="~7o;Lj1wuK+W756hOP4z"><field name="NUM">4</field></shadow></value><statement name="DO"><block type="moveSimple" id="EI]-nq7c}cBH2/VJnCy]"><field name="PARAM_0">E</field></block></statement><next><block type="moveSimple" id="]M/5CiU-LiYg6VecjOOk"><field name="PARAM_0">N</field><next><block type="transport" id="km*2[WcpC3e#Mwf*-/ME"><field name="PARAM_0">drop</field></block></next></block></next></block></next></block></next></block></next></block><additional>{}</additional></xml>',
+			blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="Yx#}`-PvOO]HA4c0m7]F" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="controls_repeat_ext" id="EW}F7]I5.W/RHDXz(D#W"><value name="TIMES"><shadow type="math_number" id="[`w[4(u+i(Pb9V7]8cf?"><field name="NUM">10</field></shadow></value><statement name="DO"><block type="controls_if" id="WF]s+UyLClxAl1QMAHP]"><value name="IF0"><block type="sensorBool" id="oN}FjhQdXVh,W*RMR]}B"><field name="PARAM_0">under</field><field name="PARAM_2">category</field><field name="PARAM_1">transportable</field></block></value><statement name="DO0"><block type="transport" id="|AOJw9+Yc_/d/i~b:j(,"><field name="PARAM_0">pick</field></block></statement><next><block type="moveSimple" id="gflQaZi-3m/7*[!TPB(u"><field name="PARAM_0">E</field></block></next></block></statement></block></next></block><additional>{}</additional></xml>',
 		},					
 		checkEndEveryTurn: false,		//kako pogosto preverjamo uspešnost rešitve
 		// checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false) },
 		checkEndCondition:  (context, lastTurn) => { 
 			robotEndConditions.checkCombiner(context, lastTurn, [
-				(context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "robot0"}, {category: "green"}) },
-				(context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "marble"}, {category: "green"}) },
+				(context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "transportable"}, {}, exist=false) }, 
+				
 			])
 		},
 		computeGrade: robotGradeFunctions.allOrNothing,
@@ -128,27 +128,18 @@ function initTask(subTask) {
 		border: 0,
 		backgroundColour: "white",
 		// backgroundTile: false,
-		backgroundTile: false,
+		backgroundTile: "Dirt.png",
 		borderColour: "black",
-		showLabels: false,
+		showLabels: true,
 
 		cellSide: 60,	
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: "Car.png", side: 60, nbStates: 9, offsetX: -14, zOrder: 8,
+			robot0: { img: "green_dragon.png", side: 80, nbStates: 9, offsetX: -14, zOrder: 8,
 						category: {'robot': true}},
-			obstacle: { num: 2, img: "Tree_with_grass.png",  zOrder: 8, category: {'obstacle':true}, },
-			grass: { num: 12, img: "Grass.png", zOrder: 2, category: {'color':true}, },
-			green: { num: 3, img: "School.png", zOrder: 2, category: {'green':true}, },
-			marble: { num: 10, img: "Caterpillar_transparent.png", zOrder: 2, category: {'transportable':true}, },
-			hole: { num: 11, img: "Road_horizontal_with_bus_sign.png", zOrder: 2, category: {'transportable':true}, },
-			cesta_navzgor: { num: 4, img: "Road_vertical.png", zOrder: 2, category: {'color':true}, },
-			cesta_vodoravna: { num: 5, img: "Road_horizontal.png", zOrder: 2, category: {'color':true}, },
-			cesta_ovinek1: { num: 6, img: "Road_curved4.png", zOrder: 2, category: {'color':true}, },
-			cesta_ovinek2: { num: 7, img: "Road_curved1.png", zOrder: 2, category: {'color':true}, },
-			cesta_ovinek3: { num: 8, img: "Road_curved2.png", zOrder: 2, category: {'color':true}, },
-			cesta_ovinek4: { num: 9, img: "Road_curved1.png", zOrder: 2, category: {'color':true}, },
+			marker: { num: 2, img: ["hole_coin.svg", "hole.png"], zOrder: 8, category: {'transportable':true}, },
+			luknja: { num: 3, img: ["hole.svg", "hole.png"], zOrder: 2, },
 		}, 
 		ignoreInvalidMoves: false,
 	};
@@ -157,19 +148,22 @@ function initTask(subTask) {
 		easy: [
 			{
 				tiles: [
-					[2, 2, 2, 2, 2, 3],
-					[2, 6, 11, 5, 5, 8],
-					[2, 4, 2, 2, 2, 2],
-					[2, 4, 2, 2, 2, 2],
-					[2, 4, 2, 2, 2, 2],
-					[2, 4, 2, 2, 2, 2],
-					[2, 9, 5, 5, 5, 5]
+					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+					[1, 1, 1, 2, 1, 1, 2, 2, 2, 1, 1, 2, 2, 1, 2, 1],
+					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 				],
 			   initItems: [
-					 { row: 6, col: 5, dir: 0, type: "robot0", dir:4},
-					 { row: 4, col: 1, type: "marble" },
+					 { row: 1, col: 1, dir: 0, type: "robot0", dir:0},
+					 { row: 1, col: 3, dir: 0, type: "luknja", dir:0},
+					 { row: 1, col: 6, dir: 0, type: "luknja", dir:0},
+					 { row: 1, col: 7, dir: 0, type: "luknja", dir:0},
+					 { row: 1, col: 8, dir: 0, type: "luknja", dir:0},
+					 { row: 1, col: 11, dir: 0, type: "luknja", dir:0},
+					 { row: 1, col: 12, dir: 0, type: "luknja", dir:0},
+					 { row: 1, col: 14, dir: 0, type: "luknja", dir:0},
 				  ]
-			}
+			},
+			
 		 ],
 	};
 

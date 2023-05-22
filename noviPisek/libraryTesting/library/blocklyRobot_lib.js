@@ -943,7 +943,6 @@ var getContext = function(display, infos) {
    context.robot.move = function(dir, amount, callback) {
       var newDir = context.props.dirNames.indexOf(dir);
       var robot = context.getItems(undefined, undefined, {category: 'robot', rank: context.robotRankInUse}).pop();
-      console.log(robot);
       var dRow = context.props.delta[newDir][0];
       var dCol = context.props.delta[newDir][1];
       var prevTime = 0;
@@ -1125,21 +1124,16 @@ var getContext = function(display, infos) {
       }
    };
    context.robot.alterValue = function(dDir, category, key, value, callback) {
-      console.log(dDir, category, key, value);
       var robot = context.getItems(undefined, undefined, {category: 'robot', rank: context.robotRankInUse}).pop();
       var {row, col} = context.dirHelper(robot, dDir);
       
       var filters = {};
       if(!(category == 'nonspecific')){
-         console.log(category);
          filters["category"] = category;
       }
-      console.log(filters);
       filters[key] = undefined;
-      console.log(filters);
       var items = context.getItems(row, col, filters);
       if(items.length > 0){
-         console.log(items.length, items, filters);
          var item = items.pop();
          item[key] = value;
          
@@ -2002,7 +1996,6 @@ var robotEndConditions = {
                   found = true;
                   for(var ik = 0; ik < keys.length; ik++) {
                      var key = keys[ik];
-                     console.log(i, j, items1[i][key], items2[j][key]);
                      if(items1[i][key] != items2[j][key]) found = false;
                   }
                }

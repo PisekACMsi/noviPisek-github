@@ -325,8 +325,7 @@ var getContext = function(display, infos) {
       this.fullTransport = false;
       this.lost = false;
       this.success = false;
-      this.startNbMoves = infos.maxMoves;
-      this.nbMoves = 0;
+      this.nbMoves = infos.maxMoves;
       this.nbCoins = 0;
 		this.robotRankInUse = 0;
       this.transporting = []; 
@@ -751,7 +750,12 @@ var getContext = function(display, infos) {
       }
       return listItems;
    };
-   context.moveRobot = function(newRow, newCol, newDir, prevTime=0., factor=1.) {
+   context.moveRobot = function(newRow, newCol, newDir, prevTime=0., factor=1., countMoves=true) {
+      if(this.nbMoves != undefined){
+         if (this.nbMoves<=0) throw(strings.errors.maxMovesReached);
+         else if(countMoves) this.nbMoves--;
+      }
+
       var iRobot = this.robotRankInUse;
       var robot = this.getItems(undefined, undefined, {category: 'robot', rank: this.robotRankInUse}).pop();
 
@@ -813,9 +817,9 @@ var getContext = function(display, infos) {
             var triggerFunction = function(){
                for(var it = 0; it < triggered.length; it++) {
                   var trigItem = triggered[it];
-                  if(context.display){
+                  if(this.display){
                      trigItem.element.attr("src", imgPath+trigItem.img);
-                     // context.redisplayItem(trigItem); // FUTURE this would be better in some cases??
+                     // this.redisplayItem(trigItem); // FUTURE this would be better in some cases??
                   }
                }
             }
@@ -828,7 +832,7 @@ var getContext = function(display, infos) {
          var coins = this.getItems(newRow, newCol, {category: 'coin'});
          if (coins.length > 0) {
             for(var c of coins){
-               if(c.battery != undefined) this.startNbMoves += c.battery;
+               if(c.battery != undefined) this.nbMoves += c.battery;
             }
             this.destroyItems( coins, false );
             this.nbCoins += coins.length;
@@ -838,17 +842,25 @@ var getContext = function(display, infos) {
             if (this.display)
                this.delayFactory.createTimeout("removeItems" + iRobot + "_" + Math.random(), coinFunction, infos.actionDelay * (currTime + prevTime));
          }
+
+         // update html
+         if (this.display){
+            var currNbMoves = this.nbMoves;
+            var currNbCoins = this.nbCoins;
+            var htmlFunction = function(){
+               $("#nbMoves").html(currNbMoves);
+               $("#nbCoins").html(currNbCoins);
+            }
+            this.delayFactory.createTimeout("updateHtml" + iRobot + "_" + Math.random(), htmlFunction, infos.actionDelay * prevTime);
+         }
       }
-      
-      $("#nbMoves").html(this.nbMoves);
-      $("#nbCoins").html(this.nbCoins);
 
       // check for falling in gravity, if not jumping
       if (infos.hasGravity) {
          // check if tile under is obstacle to stand on
          var obstacles = this.getItems(newRow+1, newCol, {category: 'obstacle'});
          if(obstacles.length == 0){
-            currTime += this.moveRobot(newRow+1, newCol, newDir, prevTime=prevTime+currTime, factor=0.5);
+            currTime += this.moveRobot(newRow+1, newCol, newDir, prevTime=prevTime+currTime, factor=0.5, countMoves=false);
          }
       }
 
@@ -953,7 +965,6 @@ var getContext = function(display, infos) {
 	
    // BLOCKS functions --------------------------------------------------------------
    context.robot.move = function(dir, amount, callback) {
-      console.log("moves: ", context.startNbMoves, context.nbMoves);
       var newDir = context.props.dirNames.indexOf(dir);
       var robot = context.getItems(undefined, undefined, {category: 'robot', rank: context.robotRankInUse}).pop();
       var dRow = context.props.delta[newDir][0];
@@ -966,9 +977,7 @@ var getContext = function(display, infos) {
          amount = -amount;
       }
       for(var i=0; i<amount; i++){
-         if((context.startNbMoves != undefined) && (context.nbMoves>=context.startNbMoves)) throw(strings.errors.maxMovesReached);
          prevTime += context.moveRobot(robot.row+sign*dRow, robot.col+sign*dCol, newDir, prevTime=prevTime);
-         context.nbMoves++;
       }
       
       context.waitDelay(callback, undefined, infos.actionDelay * prevTime);
@@ -1181,7 +1190,7 @@ var getContext = function(display, infos) {
       else throw(strings.errors.noSuchItemOnCell); 
       
       var time = 0;
-      if (infos.hasGravity) time = context.moveRobot(robot.row, robot.col, robot.dir); // if robot destroy platform underneath itself
+      if (infos.hasGravity) time = context.moveRobot(robot.row, robot.col, robot.dir, countMoves=false); // if robot destroy platform underneath itself
       context.waitDelay(callback, undefined, infos.actionDelay * time);
    };
    context.robot.create = function(dDir, type, key, value, callback){

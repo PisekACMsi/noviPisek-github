@@ -1115,8 +1115,14 @@ var getContext = function(display, infos) {
       var robot = context.getItems(undefined, undefined, {category: 'robot', rank: context.robotRankInUse}).pop();
       var {row, col} = context.dirHelper(robot, dDir);
 
+      var not = false;
+      if(value.includes("not")){
+         value = value.replace("not", "");
+         not = true;
+      }
       var items = context.filterHelper(row, col, key, value, edgeSwitch=true);
-      context.callCallback(callback, (items.length != 0));
+      if (not) context.callCallback(callback, (items.length == 0));
+      else context.callCallback(callback, (items.length != 0));
    };
    context.robot.sensorValue = function(dDir, category, key, callback) {
       var robot = context.getItems(undefined, undefined, {category: 'robot', rank: context.robotRankInUse}).pop();

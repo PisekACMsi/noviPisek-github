@@ -55,14 +55,20 @@
 	<body onresize="task.displayedSubTask.updateScale()">
 		<div id="task">
             <h1>Pišek in električni avto</h1>  <!-- Naslov naloge -->
-			<div id="tabsContainer"></div>
+			<div id="tabsContainer", style="text-align:left;">	
+				<p>
+					Poteze: <label id="nbMoves">0</label>, 
+					Baterije: <label id="nbCoins">0</label>
+				</p>		
+			</div>
 			<div id="taskContent">
 				<div id="taskIntro"> <!-- Besedilo naloge -->
 					<p>
 						Pišek se je ravnokar naučil voziti avtomobil. Kupil je električni avto, sedaj bi se rad odpeljal domov. Pozor! Med vožnjo porablja elektriko zato ga mora na poti napolniti. Ko napolni avto se mu gorivo poveča za 5. Če mu zmanjka goriva se avto ustavi. Z vsakim premikom porabi eno enoto elektrike. Na začetku ima elektrike za premik po 5ih poljih.
-					</p>				
+					</p>	
 				</div>
-				<div id="gridContainer"></div>
+				<div id="gridContainer">
+				</div>
 				<div id="blocklyLibContent"></div>
 			</div>
 		</div>

@@ -1064,6 +1064,8 @@ var getContext = function(display, infos) {
          var transItem = transportables.pop();
          if (!("transOrder" in transItem)) {
             context.items.splice(transItem.index, 1);
+            transItem.row = undefined;
+            transItem.col = undefined;
             context.transporting[robot.rank].push( transItem );
          }
          else if(context.transportingValues[robot.rank].length-1 >= transItem.transOrder){
@@ -1074,6 +1076,8 @@ var getContext = function(display, infos) {
          }
          else {
             context.items.splice(transItem.index, 1);
+            transItem.row = undefined;
+            transItem.col = undefined;
             context.transportingValues[robot.rank].push( transItem );
          }  
 

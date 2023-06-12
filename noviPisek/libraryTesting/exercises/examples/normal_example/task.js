@@ -50,6 +50,8 @@ function initTask(subTask) {
 					var transItem = transportables.pop();
 					if (!("transOrder" in transItem)) {
 						context.items.splice(transItem.index, 1);
+						transItem.row = undefined;
+						transItem.col = undefined;
 						context.transporting[robot.rank].push( transItem );
 					}
 					else if(context.transportingValues[robot.rank].length-1 >= transItem.transOrder){
@@ -60,6 +62,8 @@ function initTask(subTask) {
 					}
 					else {
 						context.items.splice(transItem.index, 1);
+						transItem.row = undefined;
+						transItem.col = undefined;
 						context.transportingValues[robot.rank].push( transItem );
 					}  
 					

@@ -809,23 +809,25 @@ var getContext = function(display, infos) {
          for(var ib = 0; ib < buttons.length; ib++) {
             var button = buttons[ib];
             var triggered = this.getItems(undefined, undefined, {id: button.id});
+            var imgs = [];
             for(var it = 0; it < triggered.length; it++) {
                triggered[it].value += 1;
                this.resetProperties(triggered[it], updateOnly=true);
+               imgs.push(triggered[it].img);
             }
 
-            var triggerFunction = function(){
+            var triggerFunction = function(triggered, imgs){
                for(var it = 0; it < triggered.length; it++) {
                   var trigItem = triggered[it];
-                  if(this.display){
-                     trigItem.element.attr("src", imgPath+trigItem.img);
+                  if(context.display){
+                     trigItem.element.attr("src", imgPath+imgs[it]);
                      // this.redisplayItem(trigItem); // FUTURE this would be better in some cases??
                   }
                }
             }
 
-            if (this.display) this.delayFactory.createTimeout("changeItems" + iRobot + "_" + Math.random(), triggerFunction, infos.actionDelay * (currTime + prevTime));
-            else triggerFunction();
+            if (this.display) this.delayFactory.createTimeout("changeItems" + iRobot + "_" + Math.random(), ()=>{triggerFunction(triggered, imgs)}, infos.actionDelay * (currTime + prevTime));
+            else triggerFunction(triggered);
          }
 
          // ***** clear coins
@@ -836,22 +838,20 @@ var getContext = function(display, infos) {
             }
             this.destroyItems( coins, false );
             this.nbCoins += coins.length;
-            var coinFunction = function(){
+            var coinFunction = function(coins){
                for (var ic = coins.length-1; ic >= 0; ic--) coins[ic].element.remove();
             }
             if (this.display)
-               this.delayFactory.createTimeout("removeItems" + iRobot + "_" + Math.random(), coinFunction, infos.actionDelay * (currTime + prevTime));
+               this.delayFactory.createTimeout("removeItems" + iRobot + "_" + Math.random(), ()=>{coinFunction(coins)}, infos.actionDelay * (currTime + prevTime));
          }
 
          // update html
          if (this.display){
-            var currNbMoves = this.nbMoves;
-            var currNbCoins = this.nbCoins;
-            var htmlFunction = function(){
+            var htmlFunction = function(currNbCoins, currNbMoves){
                $("#nbMoves").html(currNbMoves);
                $("#nbCoins").html(currNbCoins);
             }
-            this.delayFactory.createTimeout("updateHtml" + iRobot + "_" + Math.random(), htmlFunction, infos.actionDelay * prevTime);
+            this.delayFactory.createTimeout("updateHtml" + iRobot + "_" + Math.random(), ()=>{htmlFunction(this.nbMoves, this.nbCoins)}, infos.actionDelay * prevTime);
          }
       }
 

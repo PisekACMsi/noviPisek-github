@@ -81,8 +81,6 @@ function initTask(subTask) {
 			robot0: { img: ["Gasper/girl_all_8_sides.png", "red_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
 						category: {'robot': true, 'obstacle':true, 'transportable':true}, },
 			obstacle: { num: 2, img: "Gasper/Tree_with_grass.png",  zOrder: 8, category: {'obstacle':true}, },
-			ball: {num: 3, img: "Gasper/ball.png", side:40, zOrder: 7, offsetX:7, transOrder: 0, category: {'coin':true}, },
-			// paint: {num: 4, zOrder: 1, colour: "red", },
 			goal: {num: 5, img: "Gasper/goal.png",  },
 		}, 
 		ignoreInvalidMoves: false,

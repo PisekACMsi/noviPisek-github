@@ -71,18 +71,19 @@ function initTask(subTask) {
 			
 		border: 0.05,
 		backgroundColour: false,
-		backgroundTile: 'tile.png',
+		backgroundTile: 'Gasper/grass.png',
 		borderColour: false,
 
 		cellSide: 60,	
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["green_robot.png", "red_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
+			robot0: { img: ["Gasper/girl_all_8_sides.png", "red_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
 						category: {'robot': true, 'obstacle':true, 'transportable':true}, },
-			obstacle: { num: 2, img: "obstacle1.png",  zOrder: 8, category: {'obstacle':true}, },
-			coin: {num: 3, img: "coin.png", zOrder: 0, transOrder: 0, category: {'coin':true}, },
-			paint: {num: 4, zOrder: 1, colour: "red", },
+			obstacle: { num: 2, img: "Gasper/Tree_with_grass.png",  zOrder: 8, category: {'obstacle':true}, },
+			ball: {num: 3, img: "Gasper/ball.png", side:40, zOrder: 7, offsetX:7, transOrder: 0, category: {'coin':true}, },
+			// paint: {num: 4, zOrder: 1, colour: "red", },
+			goal: {num: 5, img: "Gasper/goal.png",  },
 		}, 
 		ignoreInvalidMoves: false,
 	};
@@ -91,7 +92,7 @@ function initTask(subTask) {
 		easy: [
 			{
 				tiles: [
-					[1, 1, 1, 2, 2, 2],
+					[1, 3, 1, 2, 2, 2],
 					[2, 2, 1, 2, 2, 2],
 					[2, 2, 1, 2, 2, 2],
 					[2, 2, 1, 2, 2, 2],
@@ -101,11 +102,11 @@ function initTask(subTask) {
 					[2, 2, 2, 2, 1, 2],
 					[2, 2, 2, 2, 1, 2],
 					[2, 2, 2, 2, 1, 2],
-					[2, 2, 2, 2, 3, 2],
+					[2, 2, 2, 2, 1, 2],
 				],
 				initItems: [
 					{ row: 0, col: 0, value: 0, dir: 2, type: "robot0", id:1},
-					{ row: 10, col: 4, type: "paint"},
+					{ row: 10, col: 4, type: "goal"},
 					
 				],
 			},

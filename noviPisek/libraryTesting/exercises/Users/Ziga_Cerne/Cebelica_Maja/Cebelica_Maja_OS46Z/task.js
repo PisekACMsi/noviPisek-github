@@ -187,18 +187,18 @@ function initTask(subTask) {
 			
 		border:0.05,
 		backgroundColour: false,
-		backgroundTile: 'tile.png',
+		backgroundTile: 'Gasper/grass.png',
 		borderColour: false,
 
 		cellSide: 60,	
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["bee.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
+			robot0: { img: ["Gasper/bee_all_8_sides.png"], side: 60, nbStates: 8, offsetX: 0, zOrder: 8,
 						category: {'robot': true}, },
-			cvet: { num: 2, img: "flower.png", zOrder: 2, category: {}, },
-			prah: { num: 3, img: "flowerPrah.png", zOrder: 1, category: {'transportable':true}, transOrder:0},
-			sat: {num: 4, img: ["honeycomb1.png", "honeycomb2.png", "honeycomb2.png", "honeycomb2.png"], zOrder: 2, },
+			cvet: { num: 2, img: "Gasper/flower_without_dust.png", zOrder: 2, category: {}, },
+			prah: { num: 3, img: "Gasper/flower_dust.png", zOrder: 1, category: {'transportable':true}, transOrder:0},
+			sat: {num: 4, img: ["Gasper/honeycomb_empty.png", "Gasper/honeycomb_full.png", "Gasper/honeycomb_full.png", "Gasper/honeycomb_full.png"], zOrder: 2, },
 		}, 
 		ignoreInvalidMoves: false,
 	};

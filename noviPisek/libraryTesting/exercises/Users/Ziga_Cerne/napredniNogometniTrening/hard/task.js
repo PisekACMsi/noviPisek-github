@@ -11,8 +11,8 @@ function initTask(subTask) {
 				   actions: "Gibanje",
 				},
 				messages:{
-					itemsExist: "Žoga ni prispela na cilj. Poskusi ponovno. Saj nisi popolnoma nesposoben.",
-					itemsDontExist: "Bravo zadel si gol.",
+					itemsCoincide: "Bravo zadel si gol.",
+					itemsDontCoincide: "Žoga ni prispela na cilj. Poskusi ponovno. Saj nisi popolnoma nesposoben.",
 				},
 				errors: {
 					obstacle: "Pazi, drevo!"
@@ -66,7 +66,7 @@ function initTask(subTask) {
 			blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="@9T1_{JJ5zvR2~m3rk)f" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="controls_repeat_ext" id="HXU3L|~h,HRM@HoVc+(2"><value name="TIMES"><shadow type="math_number" id="pj=vHc[.ZX?w10bKD;ny"><field name="NUM">3</field></shadow></value><statement name="DO"><block type="controls_repeat_ext" id="4,/AIwSjc71t#SAg5F8,"><value name="TIMES"><shadow type="math_number" id="rg|;A_y:M-9TFg~VJE)R"><field name="NUM">3</field></shadow></value><statement name="DO"><block type="moveSimple" id="*A2z8IrUDIOp(Gd+zVE;"><field name="PARAM_0">E</field></block></statement><next><block type="controls_repeat_ext" id="E`Abx6A-5EV(0opsXq!B"><value name="TIMES"><shadow type="math_number" id="XKlR+u6vY-/P8T?Sj;sA"><field name="NUM">2</field></shadow></value><statement name="DO"><block type="moveSimple" id="lvQ4iioKylzxF,})cX?-"><field name="PARAM_0">S</field></block></statement><next><block type="controls_repeat_ext" id="52@VpJCgRa!d/j{;7XDj"><value name="TIMES"><shadow type="math_number" id="rzg2:kF81hkSfIWN7BHN"><field name="NUM">3</field></shadow></value><statement name="DO"><block type="moveSimple" id="J-un`hf7zait9pmAle6T"><field name="PARAM_0">W</field></block></statement><next><block type="controls_repeat_ext" id=".mSY,G#9Rtl@+LXnY;Hn"><value name="TIMES"><shadow type="math_number" id="9JqBVf_;,tBF9Fued0oT"><field name="NUM">2</field></shadow></value><statement name="DO"><block type="moveSimple" id="5N]XJB0B=`:sKOsV~yMc"><field name="PARAM_0">S</field></block></statement><next><block type="controls_repeat_ext" id="`3HDv{gDT.QHvaG,t{bi"><value name="TIMES"><shadow type="math_number" id="D3FKdbZ0nF6fdEkfI(#Q"><field name="NUM">3</field></shadow></value><statement name="DO"><block type="moveSimple" id="oJYOR+le/AnI}D{-vQQr"><field name="PARAM_0">E</field></block></statement></block></next></block></next></block></next></block></next></block></statement></block></next></block><additional>{}</additional></xml>',
 		},					
 		checkEndEveryTurn: false,		//kako pogosto preverjamo uspešnost rešitve
-		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false) },
+		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "robot0"}, {type: "goal"}) },
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
 		border: 0.05,
@@ -81,7 +81,6 @@ function initTask(subTask) {
 			robot0: { img: ["Gasper/girl_all_8_sides.png", "red_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
 						category: {'robot': true, 'obstacle':true, 'transportable':true}, },
 			obstacle: { num: 2, img: "Gasper/Tree_with_grass.png",  zOrder: 8, category: {'obstacle':true}, },
-			ball: {num: 3, img: "Gasper/ball.png", side:40, zOrder: 7, offsetX:7, transOrder: 0, category: {'coin':true}, },
 			// paint: {num: 4, zOrder: 1, colour: "red", },
 			goal: {num: 5, img: "Gasper/goal.png",  },
 		}, 

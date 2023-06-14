@@ -78,7 +78,7 @@ function initTask(subTask) {
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["Gasper/girl_all_8_sides.png", "red_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
+			robot0: { img: ["Gasper/girl_with_ball_all_8_sides.png", "red_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
 						category: {'robot': true, 'obstacle':true, 'transportable':true}, },
 			obstacle: { num: 2, img: "Gasper/Tree_with_grass.png",  zOrder: 8, category: {'obstacle':true}, },
 			ball: {num: 3, img: "Gasper/ball.png", side:40, zOrder: 7, offsetX:7, transOrder: 0, category: {'coin':true}, },
@@ -92,7 +92,7 @@ function initTask(subTask) {
 		easy: [
 			{
 				tiles: [
-					[1, 3, 1, 1, 2, 2, 2, 2, 2, 2],
+					[1, 1, 1, 1, 2, 2, 2, 2, 2, 2],
 					[2, 2, 2, 1, 2, 2, 2, 2, 2, 2],
 					[1, 1, 1, 1, 2, 2, 2, 2, 2, 2],
 					[1, 2, 2, 2, 2, 2, 2, 2, 2, 2],

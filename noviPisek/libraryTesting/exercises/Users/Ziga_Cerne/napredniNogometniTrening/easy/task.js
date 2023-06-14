@@ -11,8 +11,8 @@ function initTask(subTask) {
 				   actions: "Gibanje",
 				},
 				messages:{
-					itemsExist: "Žoga ni prispela na cilj. Poskusi ponovno. Saj nisi popolnoma nesposoben.",
-					itemsDontExist: "Bravo zadel si gol.",
+					itemsCoincide: "Bravo zadel si gol.",
+					itemsDontCoincide: "Žoga ni prispela na cilj. Poskusi ponovno. Saj nisi popolnoma nesposoben.",
 				},
 				errors: {
 					obstacle: "Pazi, drevo!"
@@ -66,7 +66,7 @@ function initTask(subTask) {
 			blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="@9T1_{JJ5zvR2~m3rk)f" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="moveSimple" id="KfN4~Hv[lOyp9fmmCN`9"><field name="PARAM_0">E</field><next><block type="controls_repeat_ext" id="HXU3L|~h,HRM@HoVc+(2"><value name="TIMES"><shadow type="math_number" id="pj=vHc[.ZX?w10bKD;ny"><field name="NUM">4</field></shadow></value><statement name="DO"><block type="moveSimple" id="lvQ4iioKylzxF,})cX?-"><field name="PARAM_0">S</field></block></statement><next><block type="controls_repeat_ext" id="gTkNpHgewnKd|l2gh`#a"><value name="TIMES"><shadow type="math_number" id="y@X-T#`:|ah1G=rZ;pX9"><field name="NUM">4</field></shadow></value><statement name="DO"><block type="moveSimple" id="|+f]~;NUkoC-_Q+w4PN,"><field name="PARAM_0">E</field></block></statement><next><block type="controls_repeat_ext" id="B~W4vZ9{dbE}kaA/6A__"><value name="TIMES"><shadow type="math_number" id="ZR8-];/eL7:)Q)U_A0NT"><field name="NUM">2</field></shadow></value><statement name="DO"><block type="moveSimple" id="LTox;PG0el?]P+1~t!!:"><field name="PARAM_0">S</field></block></statement></block></next></block></next></block></next></block></next></block><additional>{}</additional></xml>',
 		},					
 		checkEndEveryTurn: true,		//kako pogosto preverjamo uspešnost rešitve
-		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false) },
+		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "robot0"}, {type: "goal"}) },
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
 		border: 0.05,
@@ -92,7 +92,7 @@ function initTask(subTask) {
 		easy: [
 			{
 				tiles: [
-					[1, 3, 2, 2, 2, 2],
+					[1, 1, 2, 2, 2, 2],
 					[2, 1, 2, 2, 2, 2],
 					[2, 1, 2, 2, 2, 2],
 					[2, 1, 2, 2, 2, 2],

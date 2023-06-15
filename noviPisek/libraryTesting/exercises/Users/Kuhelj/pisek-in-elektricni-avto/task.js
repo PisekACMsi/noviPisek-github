@@ -171,7 +171,7 @@ function initTask(subTask) {
 		border: 0.05,
 		backgroundColour: "gray",
 		backgroundTile: false,
-		// backgroundTile: "tile.png",
+		backgroundTile: "Gasper/sand.png",
 		borderColour: "red",
 		showLabels: true,
 
@@ -179,9 +179,15 @@ function initTask(subTask) {
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: "car.png", side: 60, nbStates: 9, offsetX: 0, zOrder: 8, category: {'robot': true}, },
-			coin: { num: 2, img: "battery.png", zOrder: 2, category: {'coin':true}, battery: 5},
-			goal: { num: 3, img: 'house3.png', zOrder: 3, },
+			robot0: { img: "Gasper/Car.png", side: 60, nbStates: 9, offsetX: -5, zOrder: 8, category: {'robot': true}, },
+			battery: { num: 2, img: "Gasper/battery.png", zOrder: 2, category: {'coin':true}, battery: 5},
+			goal: { num: 3, img: 'Gasper/yellow_house.png', zOrder: 3, },
+			road1: { num: 4, img: "Gasper/Road_curved_transparent1.png", zOrder: 1, category: {'obstacle':false}, },
+			road2: { num: 5, img: "Gasper/Road_curved_transparent2.png", zOrder: 1, category: {'obstacle':false}, },
+			road3: { num: 6, img: "Gasper/Road_curved_transparent3.png", zOrder: 1, category: {'obstacle':false}, },
+			road4: { num: 7, img: "Gasper/Road_curved_transparent4.png", zOrder: 1, category: {'obstacle':false}, },
+			road_horizontal: { num: 8, img: "Gasper/Road_horizontal.png", zOrder: 1, category: {'obstacle':false}, },
+			road_vertical: { num: 9, img: "Gasper/Road_vertical.png", zOrder: 1, category: {'obstacle':false}, },
 		}, 
 		ignoreInvalidMoves: false,
 	};
@@ -191,7 +197,7 @@ function initTask(subTask) {
 			{
 				tiles: [
 					[1, 1, 1, 1, 1, 1, 1, 1],
-					[1, 1, 2, 1, 1, 1, 1, 1],
+					[1, 1, 1, 1, 1, 1, 1, 1],
 					[1, 1, 1, 1, 3, 1, 1, 1],
 					[1, 1, 1, 1, 1, 1, 1, 1],
 					[1, 1, 1, 1, 1, 1, 1, 1],
@@ -199,6 +205,7 @@ function initTask(subTask) {
 				],
 				initItems: [
 					{ row: 0, col: 0, dir: 0, type: "robot0" },
+					{ row:1, col: 2, dir: 0, type: "battery" },
 				],
 			},
 		],

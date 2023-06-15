@@ -197,7 +197,7 @@ function initTask(subTask) {
 		border: 0.05,
 		backgroundColour: "pink",
 		// backgroundTile: false,
-		backgroundTile: "tile.png",
+		backgroundTile: "Gasper/grass2.png",
 		borderColour: "red",
 		showLabels: true,
 
@@ -205,7 +205,7 @@ function initTask(subTask) {
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["green_robot.png", "red_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
+			robot0: { img: ["Gasper/pisek_all_8_sides.png", "red_robot.png"], side: 60, nbStates: 9, offsetX: -6, zOrder: 8,
 						category: {'robot': true}, },
 			number: {num: 2, value: 0, zOrder: 2, category: {'number':true},  },
 			number0: {num: 100, value: 0, zOrder: 2, category: {'number':true},  },

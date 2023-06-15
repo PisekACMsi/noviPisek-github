@@ -77,7 +77,7 @@ function initTask(subTask) {
 			
 		border: 0.05,
 		backgroundColour: false,
-		backgroundTile: 'lane.jpg',
+		backgroundTile: 'Gasper/wooden_floor_vertical.png',
 		borderColour: false,
 
 		cellSide: 60,	
@@ -86,7 +86,7 @@ function initTask(subTask) {
 		itemTypes: {
 			robot0: { img: ["green_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
 						category: {'robot': true}, },
-			pin: { num: 2, img: "pin.jpg", zOrder: 2, category: {'coin':true}, },
+			pin: { num: 2, img: "Gasper/bowling_pin.png", zOrder: 2, category: {'coin':true}, },
 		}, 
 		ignoreInvalidMoves: false,
 	};

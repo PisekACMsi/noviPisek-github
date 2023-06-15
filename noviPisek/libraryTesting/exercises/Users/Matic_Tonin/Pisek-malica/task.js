@@ -60,16 +60,16 @@ function initTask(subTask) {
 			
 		border: 0.05,
 		backgroundColour: false,
-		backgroundTile: 'tile.png',
+		backgroundTile: 'Gasper/grass.png',
 		borderColour: false,
 
 		cellSide: 60,	
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["pisek.png"], side: 60, nbStates: 9, offsetX: -14, zOrder: 8, category: {'robot': true}, },
-			seed: { num: 2, img: "pill.png", zOrder: 2, category: {'coin':true}, },
-			obstacle: { num: 3, img: "obstacle1.png", zOrder: 2,category: {'obstacle':true},},
+			robot0: { img: ["Gasper/pisek_all_8_sides.png"], side: 60, nbStates: 9, offsetX: -5, zOrder: 8, category: {'robot': true}, },
+			seed: { num: 2, img: "Gasper/seed.png", zOrder: 2, category: {'coin':true}, },
+			// obstacle: { num: 3, img: "obstacle1.png", zOrder: 2,category: {'obstacle':true},},
 		}, 
 		ignoreInvalidMoves: false,
 	};

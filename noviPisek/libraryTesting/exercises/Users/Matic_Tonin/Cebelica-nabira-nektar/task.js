@@ -104,15 +104,15 @@ function initTask(subTask) {
 			
 		border: 0.05,
 		backgroundColour: false,
-		backgroundTile: 'tile.png',
+		backgroundTile: 'Gasper/grass.png',
 		borderColour: false,
 
 		cellSide: 60,	
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["bee.png"], side: 60, nbStates: 8, offsetX: -14, zOrder: 8, category: {'robot': true}, },
-			seed: { num: 2, img: "flower.png", zOrder: 2, category: {'transportable':true}, },
+			robot0: { img: ["Gasper/bee_all_8_sides.png"], side: 60, nbStates: 8, offsetX: -10, zOrder: 8, category: {'robot': true}, },
+			seed: { num: 2, img: "Gasper/flower.png", zOrder: 2, category: {'transportable':true}, },
 			obstacle: { num: 3, img: "obstacle1.png", zOrder: 2,category: {'obstacle':true},},
 		}, 
 		ignoreInvalidMoves: false,

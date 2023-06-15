@@ -144,8 +144,8 @@ function initTask(subTask) {
 		itemTypes: {
 			robot0: { img: ["miha.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
 						category: {'robot': true}, },
-			pink_flower: { num: 2, img: "m_red.png", zOrder: 2, category: {'transportable':true}, },
-			green_flower: { num: 3, img: "m_blue.png", zOrder: 2,},
+			pink_flower: { num: 2, img: "Gasper/flower.png", zOrder: 2, category: {'transportable':true}, },
+			blue_flower: { num: 3, img: "Gasper/flower_blue.png", zOrder: 2,},
 		}, 
 		ignoreInvalidMoves: false,
 	};

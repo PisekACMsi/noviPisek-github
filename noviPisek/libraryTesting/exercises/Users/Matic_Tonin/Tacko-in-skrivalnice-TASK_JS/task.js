@@ -73,10 +73,10 @@ function initTask(subTask) {
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["piki.png"], side: 60, nbStates: 8, offsetX: -14, zOrder: 8, category: {'robot': true}, },
+			robot0: { img: ["Gasper/dog_all_8_sides.png"], side: 70, nbStates: 8, offsetX: -6, zOrder: 8, category: {'robot': true}, },
 			seed: { num: 2, img: "coin.png", zOrder: 2, category: {'coin':true}, },
 			obstacle: { num: 3, img: "miha.png", side: 60, nbStates: 8, offsetX: -14, zOrder: 2, },
-			cilj: { num: 4, side: 60, colour: "vert", category: "green" },
+			cilj: { num: 4, side: 80, img:"Gasper/tabornik_left.png", category: "green" },
 		}, 
 		ignoreInvalidMoves: false,
 	};

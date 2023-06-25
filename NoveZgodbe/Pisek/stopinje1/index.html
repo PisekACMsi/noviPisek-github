@@ -2,7 +2,7 @@
 <html>
    <head>
 		<meta charset="utf-8">	<!-- določimo način kodiranja znakov v besedilu naloge -->
-		<title>normal_example</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
+		<title>stopinje</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
 		<script>
 			window.stringsLanguage = 'sl'; //izberemo jezik za besedila ukazov in sporočil
 		</script>
@@ -25,7 +25,7 @@
 				"id": "",						//url naloge
 				"language": "sl",
 				"version": "sl.01",
-				"authors": "Martin Ristič",				//avtor
+				"authors": "",				//avtor
 				"translators": [],
 				"license": "",
 				"taskPathPrefix": "",
@@ -39,7 +39,7 @@
 		<!-- Pot do grafik -->	
 		<script> var imgPath=""; </script>
 		<!-- Tukaj uvozimo knjiznico -->	
-		<script class="remove" type="text/javascript" src="../../../../library/blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
+		<script class="remove" type="text/javascript" src="blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
 		<!-- Tukaj kličemo datoteko, kjer definiramo problem naloge -->		
 		<script type="text/javascript" src="task.js"></script>
 		<script>
@@ -50,13 +50,20 @@
     
 	<body onresize="task.displayedSubTask.updateScale()">
 		<div id="task">
-            <h1>Lačni Pišek na polju</h1>  <!-- Naslov naloge -->
+            <h1>stopinje</h1>  <!-- Naslov naloge -->
 			<div id="tabsContainer"></div>
 			<div id="taskContent">
 				<div id="taskIntro"> <!-- Besedilo naloge -->
 					<p>
-						Pišek se prebudi v zaspano jutro. Lačen se ozira za hrano. Popelji piška tako, da se izogne kupom sena ter da bo pozobal vsa zrna. Pišek je zelo lačen, zato zrno pozoba takoj, ko ga najde. Za Piškovo pot poizkusi uporabiti čim manj delčkov. 
+						Pišek na trati odkrije stopinje, ki ga vodijo do zrn. 
+						Odloči se jim slediti in pojesti vsa zrna, pri tem pa mora vsakokrat, 
+						ko naleti na stopinje, obrniti levo. Pišek tudi ve, da se stopinje na trati 
+						pojavijo točno devetkrat.<br> 
+						Napiši program, ki bo Piška vodil po pravi poti.<br>
+						NAMIG: S kocko »Senzorji« preveriš, ali je na poti stopinja. 
+
 					</p>
+				
 				</div>
 				<div id="gridContainer"></div>
 				<div id="blocklyLibContent"></div>

@@ -8,14 +8,17 @@
 		</script>
 			
 		<!-- Tukaj kličemo knjižnice potrebne za delovanje spletne strani -->
-		<script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script> 
+		<script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.5.js" id="import-modules"></script> 
+		<!-- <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script>  -->
 		<!-- <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.5.js" id="import-modules"></script>  -->
 		<script class="remove" type="text/javascript">
 			var modulesPath = '../../../../../../_common/modules/'
 			importModules([
 				'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
 				'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
-				'taskStyles-mobileFirst'/*'taskStyles-0.1'*/ ]);
+				'taskStyles-mobileFirst'
+				// 'taskStyles-0.5'
+			]);
 			importLanguageModules('blockly'); //nastavimo programski jezik Blockly
 		</script>
 			
@@ -25,7 +28,7 @@
 				"id": "",						//url naloge
 				"language": "sl",
 				"version": "sl.01",
-				"authors": "Martin Ristič",				//avtor
+				"authors": "",				//avtor
 				"translators": [],
 				"license": "",
 				"taskPathPrefix": "",
@@ -38,8 +41,9 @@
 			
 		<!-- Pot do grafik -->	
 		<script> var imgPath=""; </script>
+		<!-- <script> var imgPath=""; </script> -->
 		<!-- Tukaj uvozimo knjiznico -->	
-		<script class="remove" type="text/javascript" src="../../../../library/blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
+		<script class="remove" type="text/javascript" src="blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
 		<!-- Tukaj kličemo datoteko, kjer definiramo problem naloge -->		
 		<script type="text/javascript" src="task.js"></script>
 		<script>
@@ -50,13 +54,17 @@
     
 	<body onresize="task.displayedSubTask.updateScale()">
 		<div id="task">
-            <h1>Lačni Pišek na polju</h1>  <!-- Naslov naloge -->
+            <h1>Pobiranje kapsul</h1>  <!-- Naslov naloge -->
 			<div id="tabsContainer"></div>
 			<div id="taskContent">
 				<div id="taskIntro"> <!-- Besedilo naloge -->
-					<p>
-						Pišek se prebudi v zaspano jutro. Lačen se ozira za hrano. Popelji piška tako, da se izogne kupom sena ter da bo pozobal vsa zrna. Pišek je zelo lačen, zato zrno pozoba takoj, ko ga najde. Za Piškovo pot poizkusi uporabiti čim manj delčkov. 
-					</p>
+					<p >
+                  Drugi test, ki ga mora robot prestati, je test pobiranja. Na misijah bo imel robot veliko opravka s pobiranjem stvari. Od pobiranja testnih vzorcev do rokovanja z vesoljsko opremo. Zato mora robot pri tem testu pobrati vse kapsule. Kapsulo robot pobere samodejno, če stopi na polje s kapsulo. Pomagaj mu prestati teste!
+              </p>
+					<div>
+						
+					</div>
+				
 				</div>
 				<div id="gridContainer"></div>
 				<div id="blocklyLibContent"></div>

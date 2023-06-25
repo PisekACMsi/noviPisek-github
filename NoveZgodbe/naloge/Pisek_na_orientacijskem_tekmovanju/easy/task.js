@@ -113,7 +113,7 @@ function initTask(subTask) {
 		checkEndCondition:  (context, lastTurn) => { 
 			robotEndConditions.checkCombiner(context, lastTurn, [
 				(context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false) }, 
-				(context, lastTurn) => {},
+				//(context, lastTurn) => {},
 			])
 		},
 		computeGrade: robotGradeFunctions.allOrNothing,

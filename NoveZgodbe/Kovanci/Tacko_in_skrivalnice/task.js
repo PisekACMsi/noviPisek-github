@@ -11,7 +11,7 @@ function initTask(subTask) {
 				   actions: "Gibanje",
 				},
 				messages:{
-					itemsExist: "Nisi pobral vse priboljške.",
+					itemsExist: "Nisi pobral vseh priboljškov.",
 					itemsDontExist: "Pobral si vse priboljške in prišel do Marka.",
 				},
 			},
@@ -61,7 +61,7 @@ function initTask(subTask) {
 			// blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="Yx#}`-PvOO]HA4c0m7]F" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="move" id="4,KCbSD;_m-pZxtufj95"><field name="PARAM_0">W</field><value name="PARAM_1"><shadow type="math_number" id="CIspNjAYb7a*vulaV1{P"><field name="NUM">3</field></shadow></value><next><block type="destroy" id="KKQSCxKu;sV}+gJe?9=)"><field name="PARAM_1">obstacle</field><field name="PARAM_0">2</field><next><block type="move" id="XWv:_2Qbckm|{-94@`u,"><field name="PARAM_0">N</field><value name="PARAM_1"><shadow type="math_number" id="oR6vzE-h~{7oseb?hIAf"><field name="NUM">1</field></shadow></value></block></next></block></next></block></next></block><additional>{}</additional></xml>', 
 		},					
 		checkEndEveryTurn: false,		//kako pogosto preverjamo uspešnost rešitve
-		checkEndCondition:  (context, lastTurn) => {checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false)},
+		checkEndCondition:  (context, lastTurn) => {robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false)},
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
 		border: 0.05,

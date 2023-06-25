@@ -23,7 +23,7 @@ function initTask(subTask) {
 					}
 				},
 				messages:{
-					itemsExist: "AAAAAAAAAAAAAAAAAAAAAAAAAA",
+					itemsExist: "Pišek ni našel vseh zrn",
 					itemsDontExist: "Pišek je pobral vsa zrna",
 				},
 			},

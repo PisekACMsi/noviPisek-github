@@ -12,7 +12,7 @@ function initTask(subTask) {
 				},
 				messages:{
 					itemsDontCoincide: "Čebela ni nabrala vsega prahu. Poskusi še enkrat.",
-					itemsCoincide: "Izkoriščevalski kmet bo mastno zaslužil.",
+					itemsCoincide: "Bravo čebele je nabrala ves cvetni prah.",
 				},
 				options:{
 					move: {

@@ -91,7 +91,7 @@ function initTask(subTask) {
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["green_robot.png", "red_robot.png"], side: 80, nbStates: 9, offsetX: -14, zOrder: 8,
+			robot0: { img: ["green_robot.png", "red_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
 						category: {'robot': true}, },
 			obstacle: { num: 2, img: "ozadje.png",  zOrder: 8, category: {'obstacle':true}, },
 			obstacle2: { num: 3, img: "ozadje_2.png",  zOrder: 8, category: {'obstacle':true}, },

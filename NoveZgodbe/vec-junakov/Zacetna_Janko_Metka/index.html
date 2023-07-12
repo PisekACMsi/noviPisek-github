@@ -2,23 +2,20 @@
 <html>
    <head>
 		<meta charset="utf-8">	<!-- določimo način kodiranja znakov v besedilu naloge -->
-		<title>normal_example</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
+		<title>janko_in_metka</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
 		<script>
 			window.stringsLanguage = 'sl'; //izberemo jezik za besedila ukazov in sporočil
 		</script>
 			
 		<!-- Tukaj kličemo knjižnice potrebne za delovanje spletne strani -->
-		<script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.5.js" id="import-modules"></script> 
-		<!-- <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script>  -->
+		<script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script> 
 		<!-- <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.5.js" id="import-modules"></script>  -->
 		<script class="remove" type="text/javascript">
 			var modulesPath = '../../../_common/modules/'
 			importModules([
 				'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
 				'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
-				'taskStyles-mobileFirst'
-				// 'taskStyles-0.5'
-			]);
+				'taskStyles-mobileFirst'/*'taskStyles-0.1'*/ ]);
 			importLanguageModules('blockly'); //nastavimo programski jezik Blockly
 		</script>
 			
@@ -41,7 +38,6 @@
 			
 		<!-- Pot do grafik -->	
 		<script> var imgPath=""; </script>
-		<!-- <script> var imgPath=""; </script> -->
 		<!-- Tukaj uvozimo knjiznico -->	
 		<script class="remove" type="text/javascript" src="blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
 		<!-- Tukaj kličemo datoteko, kjer definiramo problem naloge -->		
@@ -54,20 +50,16 @@
     
 	<body onresize="task.displayedSubTask.updateScale()">
 		<div id="task">
-            <h1>Miha in Piki</h1>  <!-- Naslov naloge -->
+            <h1>janko in metka</h1>  <!-- Naslov naloge -->
 			<div id="tabsContainer"></div>
 			<div id="taskContent">
 				<div id="taskIntro"> <!-- Besedilo naloge -->
 					<p>
-						Pravimo, da je pes človeku najboljši prijatelj. Čeprav včasih nagaja, ko se odločimo, da ne bo na povodcu…
+						Pišek se je odpravil v gozd na sprehod. Da se ne bi zgubil, si je pot do doma označil s kamni. Zapomnil si je, da mora vsakič, ko pride do kamnov, zaviti desno.
+
+						Poskušaj sestaviti program tako, da bo Pišek prišel do svoje hiše. A pazi, isti program mora delovati pravilno tako pri razporeditvi kamenčkov za Test 1 kot tudi za Test 2.
+
 					</p>
-					
-					
-					<div>
-						<p>
-							Miha in Piki trenirata na pasjem poligonu. Najprej mora Miha odpreti vrata Pikiju tako, da stopi na zeleno polje. Nato mora Piki narediti isto za svojega gospodarja. Na oranžnem polju mora Miha imeti Pikija na povodcu.
-						</p>
-					</div>
 				
 				</div>
 				<div id="gridContainer"></div>

@@ -524,10 +524,6 @@ var getContext = function(display, infos) {
          item[property] = initItem[property];
       }
       this.resetProperties(item);
-
-      if(!("value" in item)){
-         item.value = 0;
-      }
       
       if (!("offsetX" in item)) item.offsetX = 0;
       if (!("offsetY" in item)) item.offsetY = 0;
@@ -540,6 +536,11 @@ var getContext = function(display, infos) {
    };
    context.resetProperties = function(item, updateOnly=false){
       var itemType = infos.itemTypes[item.type];
+      if(!("value" in item)){
+         if(itemType.value != undefined) item.value = itemType.undefined;
+         else item.value = 0;
+      }
+
       if(itemType != undefined){
          for (var key in itemType) {
             if(!(updateOnly) && !(key in item)){
@@ -805,29 +806,37 @@ var getContext = function(display, infos) {
          }
 
          // ****** activate buttons
-         var buttons = this.getItems(newRow, newCol, {category: 'button'});
-         for(var ib = 0; ib < buttons.length; ib++) {
-            var button = buttons[ib];
-            var triggered = this.getItems(undefined, undefined, {id: button.id});
-            var imgs = [];
-            for(var it = 0; it < triggered.length; it++) {
-               triggered[it].value += 1;
-               this.resetProperties(triggered[it], updateOnly=true);
-               imgs.push(triggered[it].img);
-            }
-
-            var triggerFunction = function(triggered, imgs){
+         if (changeLoc){
+            var buttons = this.getItems(newRow, newCol, {category: 'button'});
+            for(var ib = 0; ib < buttons.length; ib++) {
+               var button = buttons[ib];
+               var triggered = this.getItems(undefined, undefined, {id: button.id});
+               var imgs = [];
+               var colourIt = [];
+               var numberIt = [];
                for(var it = 0; it < triggered.length; it++) {
-                  var trigItem = triggered[it];
-                  if(context.display){
-                     trigItem.element.attr("src", imgPath+imgs[it]);
-                     // this.redisplayItem(trigItem); // FUTURE this would be better in some cases??
+                  triggered[it].value += 1;
+                  this.resetProperties(triggered[it], updateOnly=true);
+                  imgs.push(triggered[it].img);
+                  colourIt.push(triggered[it].colour);
+                  numberIt.push(triggered[it].value);
+               }
+
+               var triggerFunction = function(triggered, imgs){
+                  for(var it = 0; it < triggered.length; it++) {
+                     var trigItem = triggered[it];
+                     if(context.display){
+                        if(imgs[it] != undefined) trigItem.element.attr("src", imgPath+imgs[it]);
+                        else if(colourIt[it] != undefined) trigItem.element.attr("fill", colourIt[it]);
+                        else if(numberIt[it] != undefined) trigItem.element.attr("text", numberIt[it]);
+                        // this.redisplayItem(trigItem); // FUTURE this would be better in some cases??
+                     }
                   }
                }
-            }
 
-            if (this.display) this.delayFactory.createTimeout("changeItems" + iRobot + "_" + Math.random(), ()=>{triggerFunction(triggered, imgs)}, infos.actionDelay * (currTime + prevTime));
-            else triggerFunction(triggered);
+               if (this.display) this.delayFactory.createTimeout("changeItems" + iRobot + "_" + Math.random(), ()=>{triggerFunction(triggered, imgs)}, infos.actionDelay * (currTime + prevTime));
+               else triggerFunction(triggered);
+            }
          }
 
          // ***** clear coins
@@ -940,15 +949,6 @@ var getContext = function(display, infos) {
          var items = this.getItems(row, col, filters);
       }
       return items;
-   };
-   context.addItem = function(newItem, robot) {
-      this.resetItem(newItem);
-      if (this.display) {
-         this.redisplayItem(newItem);
-         if ((robot.col != newItem.col) || (robot.row != newItem.row)) {
-            this.resetItemsZOrder(robot.row, robot.col);
-         }
-      }
    };
    // override
    context.waitDelay = function(callback, value=undefined, delay=infos.actionDelay) {
@@ -1147,9 +1147,11 @@ var getContext = function(display, infos) {
       var filters = {};
       if(!(category == 'nonspecific')) filters["category"] = category;
       filters[key] = undefined;
+
       var items = context.getItems(row, col, filters);
       if(items.length > 0){
          var item = items.pop();
+         if(item == robot) var item = items.pop();
          context.callCallback(callback, item[key]);
       }
       else {
@@ -1201,13 +1203,14 @@ var getContext = function(display, infos) {
       var newItem = {row: row, col: col, type: type};
       newItem[key] = value;
 
-      if (context.display){
-         if (infos.actionDelay > 0) {
-            context.delayFactory.createTimeout("addItem" + "_" + Math.random(), function() {
-               context.addItem(newItem, robot);
-            }, infos.actionDelay / 2);
-         } 
-         else context.addItem(newItem, robot);
+      if (context.display && infos.actionDelay > 0) {
+         context.delayFactory.createTimeout("addItem" + "_" + Math.random(), function() {
+            context.resetItem(newItem);
+            if ((robot.col != newItem.col) || (robot.row != newItem.row)) context.resetItemsZOrder(robot.row, robot.col);
+         }, infos.actionDelay / 2);
+      } 
+      else{
+         context.resetItem(newItem);
       }
       context.waitDelay(callback);
    };
@@ -1998,7 +2001,6 @@ var getContext = function(display, infos) {
 var robotEndConditions = {
    checkItemExistence: function(context, lastTurn, filters, negfilters={}, exist=true) {
       context.success = false;
-   
       var items = context.getItems(undefined, undefined, filters, negfilters);
       if(exist) {
          if(items.length > 0){

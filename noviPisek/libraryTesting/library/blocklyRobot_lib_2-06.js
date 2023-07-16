@@ -1201,7 +1201,9 @@ var getContext = function(display, infos) {
       
       if(!(type in infos.itemTypes)) throw(strings.errors.unknownType);
       var newItem = {row: row, col: col, type: type};
+      if( context.getItems(row, col, {category: 'obstacle'}).length > 0 ) throw(context.strings.errors.obstacle);
       newItem[key] = value;
+      context.resetProperties(newItem);
 
       if (context.display && infos.actionDelay > 0) {
          context.delayFactory.createTimeout("addItem" + "_" + Math.random(), function() {

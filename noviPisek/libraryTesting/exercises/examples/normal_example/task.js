@@ -35,78 +35,7 @@ function initTask(subTask) {
 			// If you are making a new function, good advice, always staring with something that works!!
 			// - 1st copy an existing block from blocklyRobot_lib.js inside here,
 			// - use console.log() and Web Developer Tools to print values in the console, for debugging
-			context.robot.transport = function(mode, callback) { 
-				// CUSTOM we want that the image of robot changes if it picks/drops another robot!
-				var robot = context.getItems(undefined, undefined, {category: 'robot', rank: context.robotRankInUse}).pop();
-			   
-				if(mode == 'pick'){
-					// robot can't pick himself up, exclude himself!
-					var transportables = context.getItems(robot.row, robot.col, {category: 'transportable'}, {rank: context.robotRankInUse}); 
-
-					if (transportables.length == 0) {
-						throw(strings.errors.nothingToPickUp);
-					}
 			
-					var transItem = transportables.pop();
-					if (!("transOrder" in transItem)) {
-						context.items.splice(transItem.index, 1);
-						transItem.row = undefined;
-						transItem.col = undefined;
-						context.transporting[robot.rank].push( transItem );
-					}
-					else if(context.transportingValues[robot.rank].length-1 >= transItem.transOrder){
-						throw(strings.errors.alreadyTransporting);
-					}
-					else if(context.transportingValues[robot.rank].length < transItem.transOrder){
-						throw(strings.errors.wrongPickOrder);
-					}
-					else {
-						context.items.splice(transItem.index, 1);
-						transItem.row = undefined;
-						transItem.col = undefined;
-						context.transportingValues[robot.rank].push( transItem );
-					}  
-					
-					
-					context.waitDelay(function() {
-						// CUSTOM: trigger robot if it picks another robot!!
-						if("robot" in transItem.category){
-							robot.value += 1;
-							if (context.display) context.redisplayItem(robot);
-						}
-						if (context.display) transItem.element.remove();
-						callback();
-					});
-					return;
-				}
-				else if(mode == 'drop'){
-					// TODO
-					if(context.transportingValues[robot.rank].length > 0){
-						var dropItem = context.transportingValues[robot.rank].pop();
-					}
-					else if(context.transporting[robot.rank].length > 0){
-						var dropItem = context.transporting[robot.rank].pop();
-					}
-					else{
-						throw(strings.errors.notTransporting);
-					}
-					
-					context.waitDelay(function() {
-						context.items.push(dropItem);
-						dropItem.row = robot.row;
-						dropItem.col = robot.col;
-						if (context.display) context.redisplayItem(dropItem);
-						// CUSTOM: trigger robot if it drops another robot!!
-						if("robot" in dropItem.category){
-							robot.value -= 1;
-							if (context.display){
-								context.redisplayItem(robot);
-							}
-						}
-						callback();
-					});
-				}
-			};
 			
 			// CUSTOM: here you can specify the visual design of blockly block, the same way as in blocklyRobot_lib.js
 			// this way you can either override the visual design of existing blocks (such as options in dropdown field)
@@ -257,7 +186,7 @@ function initTask(subTask) {
 			robot0: { img: ["green_robot.png", "red_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
 						category: {'robot': true}, },
 			robot1: { img: ["miha.png","miha_in_piki.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
-						category: {'robot': true, 'transportable':true}, },
+						category: {'robot': true, 'transportable':true}, transOrder: 0, },
 			number: { zOrder: 2, id: 1, category: {'number':true},  },
 			obstacle: { num: 2, img: "obstacle1.png",  zOrder: 8, category: {'obstacle':true}, },
 			coin: { num: 5, img: "coin.png", zOrder: 2, category: {'coin':true}, },

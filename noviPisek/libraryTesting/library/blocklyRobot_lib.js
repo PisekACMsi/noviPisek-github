@@ -1097,10 +1097,19 @@ var getContext = function(display, infos) {
             context.transportingValues[robot.rank].push( transItem );
          }  
 
+         // context.waitDelay(function() {
+         //    if (context.display) {
+         //       transItem.element.remove();
+         //    }
+         //    callback();
+         // });
          context.waitDelay(function() {
-            if (context.display) {
-               transItem.element.remove();
+            // CUSTOM: trigger robot if it picks!!
+            if("transOrder" in transItem){
+               robot.value += 1;
+               if (context.display) context.redisplayItem(robot);
             }
+            if (context.display) transItem.element.remove();
             callback();
          });
          return;
@@ -1116,12 +1125,26 @@ var getContext = function(display, infos) {
             throw(strings.errors.notTransporting);
          }
          
+         // context.waitDelay(function() { //original
+         //    context.items.push(dropItem);
+         //    dropItem.row = robot.row;
+         //    dropItem.col = robot.col;
+         //    if (context.display) {
+         //       context.redisplayItem(dropItem);
+         //    }
+         //    callback();
+         // });
          context.waitDelay(function() {
             context.items.push(dropItem);
             dropItem.row = robot.row;
             dropItem.col = robot.col;
-            if (context.display) {
-               context.redisplayItem(dropItem);
+            if (context.display) context.redisplayItem(dropItem);
+            // CUSTOM: trigger robot if it drops!!
+            if("transOrder" in transItem){
+               robot.value -= 1;
+               if (context.display){
+                  context.redisplayItem(robot);
+               }
             }
             callback();
          });
@@ -1201,7 +1224,9 @@ var getContext = function(display, infos) {
       
       if(!(type in infos.itemTypes)) throw(strings.errors.unknownType);
       var newItem = {row: row, col: col, type: type};
+      if( context.getItems(row, col, {category: 'obstacle'}).length > 0 ) throw(context.strings.errors.obstacle);
       newItem[key] = value;
+      context.resetProperties(newItem);
 
       if (context.display && infos.actionDelay > 0) {
          context.delayFactory.createTimeout("addItem" + "_" + Math.random(), function() {

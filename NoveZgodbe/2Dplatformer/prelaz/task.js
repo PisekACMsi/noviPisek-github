@@ -11,8 +11,10 @@ function initTask(subTask) {
 				   actions: "Gibanje",
 				},
 				messages:{
-					itemsExist: "Miški ni uspeo najti sirčka.",
-					itemsDontExist: "Čestitam miška je našla sirček, sedaj ga lahko poje in zboli za sirozo.",
+					itemsExist: "Piki ni našel obeh zvezdic. Poskusi še enkrat. ",
+					itemsDontExist: "Piki je našel obe zvezdici. ",
+					itemsCoincide: "Piki je na pravi poti pri zeleni zastavici.",
+					itemsDontCoincide: "Piki ni na pravi poti pri zeleni zastavici. Poskusi še enkrat.",
 				},
 			},
 		},

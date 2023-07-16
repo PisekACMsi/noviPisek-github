@@ -2013,7 +2013,7 @@ var getContext = function(display, infos) {
 
    // add and/or override local blocks from task.js
    if (infos.localBlocks != undefined) {
-      var cblocks = infos.localBlocks(context, strings, infos);
+      var cblocks = infos.localBlocks(context, strings);
       replaceDict(cblocks, context.customBlocks);
    }
 

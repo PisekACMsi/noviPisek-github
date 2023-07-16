@@ -656,7 +656,7 @@ var getContext = function(display, infos) {
          if(item.nbStates == 4){ // FUTURE test, dont know if it works??
             x = x - ( this.props.reduceDir[item.dir] * roundItemSide);
          }
-         else x = x - (item.dir * roundItemSide);
+         else if(item.nbStates > 1) x = x - (item.dir * roundItemSide);
          // clipping image to display only one robot direction profile!
          var clipRect = "" + xClip + "," + y + "," + roundItemSide + "," + roundItemSide;
          return {
@@ -1140,7 +1140,7 @@ var getContext = function(display, infos) {
             dropItem.col = robot.col;
             if (context.display) context.redisplayItem(dropItem);
             // CUSTOM: trigger robot if it drops!!
-            if("transOrder" in transItem){
+            if("transOrder" in dropItem){
                robot.value -= 1;
                if (context.display){
                   context.redisplayItem(robot);
@@ -2013,7 +2013,7 @@ var getContext = function(display, infos) {
 
    // add and/or override local blocks from task.js
    if (infos.localBlocks != undefined) {
-      var cblocks = infos.localBlocks(context, strings);
+      var cblocks = infos.localBlocks(context, strings, infos);
       replaceDict(cblocks, context.customBlocks);
    }
 

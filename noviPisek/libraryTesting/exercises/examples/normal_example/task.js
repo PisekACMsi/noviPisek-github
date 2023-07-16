@@ -26,7 +26,8 @@ function initTask(subTask) {
 		// CUSTOM: here you can override and add new blocks, the same way as in blocklyRobot_lib.js
 		// context is the same object as inside the function "getContext"
 		// strings is equaly the same object string inside "getContext" (is already set to the active language)
-		localBlocks: function(context, strings){
+		
+		localBlocks: function(context, strings, infos){
 			// CUSTOM: first you can define functions for blocks, which need to be attached to "context.robot"
 			// this way you can either override existing function definitions from blocklyRobot_lib.js or add new ones.
 			// If you are creating new ones, you need to additionaly do the following things:

@@ -17,11 +17,12 @@ function initTask(subTask) {
 				},
 				errors: {
 					obstacle: "Pazi, drevo!",
-					uniform: "Pisek ne nosi celade!",
+					uniform: "Pišek ne nosi čelade!",
+					noSuchItemOnCell: "Pišek poskuša pogasiti polje, ki ne gori.",
 				},
 				messages:{
-					itemsExist: "Pozar se vedno gori!",
-					itemsDontExist: "Pišek je pogasil pozar.",
+					itemsExist: "Požar še vedno gori!",
+					itemsDontExist: "Pišek je pogasil požar.",
 				},
 			},
 		},
@@ -129,8 +130,8 @@ function initTask(subTask) {
 			},
 			standardBlocks: {
 				includeAll: false,
-				wholeCategories: [],
-				singleBlocks: ['math_number'],
+				wholeCategories: ['loops'],
+				singleBlocks: [],
 				excludedBlocks: [],
 			},
 		},

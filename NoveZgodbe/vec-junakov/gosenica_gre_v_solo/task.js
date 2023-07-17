@@ -11,10 +11,12 @@ function initTask(subTask) {
 				   actions: "Gibanje",
 				},
 				label: {								
-					changeRobot: "zamenjaj vlogo %1 HAHA", 
+					changeRobot: "zamenjaj vlogo %1", 
 					colour: "LOL %1",
 				},
 				options:{
+					robotName0: "Avtobus", 
+					robotName1: "Gosenica", 
 					move: {
 					   north: "gor",
 					   south: "dol",
@@ -29,8 +31,8 @@ function initTask(subTask) {
 					},
 				},
 				messages:{
-					itemsDontCoincide: "REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE",
-					itemsCoincide: "Super robot je dosegel cilj",
+					itemsDontCoincide: "Gosenica ni prišla v šolo. Poskusi še enkrat.",
+					itemsCoincide: "Gosenica je prišla v šolo.",
 				},
 			},
 		},
@@ -117,12 +119,7 @@ function initTask(subTask) {
 		},					
 		checkEndEveryTurn: false,		//kako pogosto preverjamo uspešnost rešitve
 		// checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false) },
-		checkEndCondition:  (context, lastTurn) => { 
-			robotEndConditions.checkCombiner(context, lastTurn, [
-				(context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "robot0"}, {category: "green"}) },
-				(context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "robot1"}, {category: "green"}) },
-			])
-		},
+		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {category: "robot"}, {category: "green"}) },
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
 		// border: 0.,

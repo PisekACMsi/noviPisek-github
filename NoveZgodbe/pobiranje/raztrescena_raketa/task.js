@@ -7,8 +7,8 @@ function initTask(subTask) {
 		languageStrings: {
 			sl: {
 				messages:{
-					itemsExist: "Robot ni pobral vseh predmetov",
-					itemsDontExist: "Čestitamo robot je pobral vse predmete",
+					itemsExist: "Robot ni pobral vseh predmetov.",
+					itemsDontExist: "Robot je pobral vse predmete.",
 				},
 			},
 		},

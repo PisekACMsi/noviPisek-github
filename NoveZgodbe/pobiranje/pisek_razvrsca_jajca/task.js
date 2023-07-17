@@ -11,8 +11,9 @@ function initTask(subTask) {
 				   actions: "Gibanje",
 				},
 				messages:{
-					itemsDontCoincide: "Pišek ni pravilno pospravil vseh jajc.",
-					itemsCoincide: "Čestitam. Pridn pridn Pišek.",
+					itemsDontCoincide: "Pišek ni pravilno pospravil vseh barvnih jajc. Poskusi še enkrat.",
+					itemsCoincide: "Pišek je pravilno pospravil vsa barvna jajca.",
+					notTransporting: "Pišek skuša spustiti jajce, vendar ga ne nosi.",
 				},
 				options:{
 					move: {

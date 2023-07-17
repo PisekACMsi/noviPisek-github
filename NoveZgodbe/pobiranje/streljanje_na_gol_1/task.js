@@ -20,11 +20,13 @@ function initTask(subTask) {
 					kick: "brcni v smer za",
 				},
 				messages:{
-					itemsCoincide: "Bravo zadel si gol.",
-					itemsDontCoincide: "Žoga ni prispela na cilj. Poskusi ponovno.",
+					itemsCoincide: "Lučka je zadela gol.",
+					itemsDontCoincide: "Lučka ni zadela gola. Poskusi še enkrat.",
+	
 				},
 				errors: {
-					obstacle: "Pazi, drevo!"
+					obstacle: "Pazi, stožci!"
+					notTransporting: "Lučka skuša streljati na gol, vendar ni pobrala žoge.",
 				},
 				options:{
 				},

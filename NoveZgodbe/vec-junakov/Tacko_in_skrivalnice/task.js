@@ -11,8 +11,14 @@ function initTask(subTask) {
 				   actions: "Gibanje",
 				},
 				messages:{
-					itemsExist: "Nisi pobral vseh priboljškov.",
-					itemsDontExist: "Pobral si vse priboljške in prišel do Marka.",
+					itemsExist: "Marko ni pobral Tačka. Poskusi še enkrat.",
+					itemsDontExist: "Marko je uspešno pobral Tačka.",
+					itemsCoincide: "Marko je prišel do zelene zastavice. ",
+					itemsDontCoincide: "Marko ni prišel do zelene zastavice. Poskusi še enkrat. s",
+				},
+				options:{
+					robotName0: "Miha", 
+					robotName1: "Tačko", 
 				},
 			},
 		},
@@ -35,7 +41,7 @@ function initTask(subTask) {
 		},
 		actionDelay: 400,				//parameter za časovni zamik med izvajanjem ukazov -  ne deulje??
 		blocklyColourTheme: "bwinf",	//izbira seta barv za bloke ukazov
-		maxInstructions: 25,
+		maxInstructions: 100,
 		includeBlocks: {						//dovoljeni ukazi 
 			groupByCategory: true,
 			generatedBlocks: {
@@ -44,6 +50,7 @@ function initTask(subTask) {
 					"turn",
 					"turnAround",
 					"changeRobot",
+					"transport",
 				],
 				// robot:  ["left","right","north","west","east","south","changeRobot", "pickTransportable","dropTransportable"],
 			},
@@ -60,7 +67,12 @@ function initTask(subTask) {
 			// blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="Yx#}`-PvOO]HA4c0m7]F" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="move" id="4,KCbSD;_m-pZxtufj95"><field name="PARAM_0">W</field><value name="PARAM_1"><shadow type="math_number" id="CIspNjAYb7a*vulaV1{P"><field name="NUM">3</field></shadow></value><next><block type="destroy" id="KKQSCxKu;sV}+gJe?9=)"><field name="PARAM_1">obstacle</field><field name="PARAM_0">2</field><next><block type="move" id="XWv:_2Qbckm|{-94@`u,"><field name="PARAM_0">N</field><value name="PARAM_1"><shadow type="math_number" id="oR6vzE-h~{7oseb?hIAf"><field name="NUM">1</field></shadow></value></block></next></block></next></block></next></block><additional>{}</additional></xml>', 
 		},					
 		checkEndEveryTurn: false,		//kako pogosto preverjamo uspešnost rešitve
-		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {category: "robot"}, {category: "goal"}, true) },
+		checkEndCondition:  (context, lastTurn) => { 
+			robotEndConditions.checkCombiner(context, lastTurn, [
+				(context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "robot0"}, {type: "goal"}, true) },
+				(context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {type: "robot1"}, {}, exist=false) },
+			])
+		},
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
 		border: 0.01,
@@ -73,8 +85,8 @@ function initTask(subTask) {
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
 			robot0: { img: ["miha_all_8_sides.png", "miha_with_dog_all_8_sides.png"], side: 70, nbStates: 9, offsetX: -6, zOrder: 8, category: {'robot': true}, },
-			robot1: { img: ["dog_all_8_sides.png"], side: 70, nbStates: 8, offsetX: -6, zOrder: 8, category: {'robot': true, 'transportable': true}, transOrder: 1 },
-			obstacle: { num: 2, img: "red_floor.png", zOrder: 2, },
+			robot1: { img: ["dog_all_8_sides.png"], side: 70, nbStates: 8, offsetX: -6, zOrder: 8, category: {'robot': true, 'transportable': true}, transOrder: 0 },
+			obstacle: { num: 2, img: "red_floor.png", zOrder: 2, category: {'obstacle': true}},
 			button: { img: ["button_unpressed.png", "button_pressed.png"], zOrder: 2, category: {'button':true} },
 			door: { img: ["orange_floor.png", "yellow_floor.png"], zOrder: 2, category: [{'obstacle':true}, {'obstacle':false}]},
 			goal: { num: 3, side: 80, img:"Flag2.png" },

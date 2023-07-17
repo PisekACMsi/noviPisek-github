@@ -687,7 +687,7 @@ var getContext = function(display, infos) {
       }
       for (var iItem = 0; iItem < itemsToCheck.length; iItem++) {
          var item = itemsToCheck[iItem];
-         if ((row == undefined) || ((item.row == row) && (item.col == col))) {
+         if ((row == undefined && col == undefined) || ((row == undefined) && (item.col == col)) || ((item.row == row) && (col == undefined))|| ((item.row == row) && (item.col == col))) {
             var accepted = true;
             // has to have these filters
             for (var property in filters) {
@@ -1193,12 +1193,16 @@ var getContext = function(display, infos) {
       var items = context.getItems(row, col, filters);
       if(items.length > 0){
          var item = items.pop();
-         item[key] = value;
-         
-         context.resetProperties(item, updateOnly=true);
-         if(context.display){
-            // trigItem.element.attr("src", imgPath+item.img);
-            context.redisplayItem(item);
+         if((item != robot) || (items.length > 0)){
+            if(item == robot) item = items.pop();
+            item[key] = value;
+            
+            context.resetProperties(item, updateOnly=true);
+            if(context.display){
+               // trigItem.element.attr("src", imgPath+item.img);
+               context.redisplayItem(item);
+               context.redisplayItem(robot);
+            }
          }
       }
       else {
@@ -1703,6 +1707,18 @@ var getContext = function(display, infos) {
                      },
                   ],
                },
+               blocklyXml: `
+                  <block type="alterValue">
+                     <field name="PARAM_2">colour</field>
+                     <field name="PARAM_1">obstacle</field>
+                     <field name="PARAM_0">under</field>
+                     <value name="PARAM_3">
+                        <shadow type="math_number">
+                           <field name="NUM">0</field>
+                        </shadow>
+                     </value>
+                  </block>
+               `,
             },
             {  name: "alterValue1D", 
                handler: context.robot.alterValue,
@@ -1746,6 +1762,18 @@ var getContext = function(display, infos) {
                      },
                   ],
                },
+               blocklyXml: `
+                  <block type="alterValue1D">
+                     <field name="PARAM_2">colour</field>
+                     <field name="PARAM_1">obstacle</field>
+                     <field name="PARAM_0">under</field>
+                     <value name="PARAM_3">
+                        <shadow type="math_number">
+                           <field name="NUM">0</field>
+                        </shadow>
+                     </value>
+                  </block>
+               `,
             },
             {  name: "destroy", 
                blocklyJson: {

@@ -98,9 +98,10 @@ function initTask(subTask) {
 			groupByCategory: true,
 			generatedBlocks: {
 				robot:  [
-					"moveSimple",
+					"forward",
 					"transport",
-					"sensorBool"
+					"sensorBool",
+					"changeRobot",
 				],
 				// robot:  ["left","right","north","west","east","south","changeRobot", "pickTransportable","dropTransportable"],
 			},
@@ -112,36 +113,35 @@ function initTask(subTask) {
 			},
 		},
 		startingExample: { //vnaprej podana koda ukazov
-			blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="Yx#}`-PvOO]HA4c0m7]F" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="controls_repeat_ext" id="~ax3O=s`Kz{4(.7gUJwH"><value name="TIMES"><shadow type="math_number" id="H81lKCg+H*9/+s36=e@Q"><field name="NUM">4</field></shadow></value><statement name="DO"><block type="moveSimple" id="wWI4g5~)ZJ!8|b=dEt4h"><field name="PARAM_0">W</field></block></statement><next><block type="controls_repeat_ext" id="(URq;;j[p9VNT[ea`pF~"><value name="TIMES"><shadow type="math_number" id="/GH[?+wHB67zM9yjl/tr"><field name="NUM">5</field></shadow></value><statement name="DO"><block type="controls_if" id=":*J}.@iqsE#N*6`42bwb"><value name="IF0"><block type="sensorBool" id="ey2WM.o)`bFRkR*9/vCc"><field name="PARAM_0">under</field><field name="PARAM_2">category</field><field name="PARAM_1">transportable</field></block></value><statement name="DO0"><block type="transport" id="*GH1~Jr,Hp73@nUGQmpL"><field name="PARAM_0">pick</field></block></statement><next><block type="moveSimple" id=",iX!q2E*edM#/S;T5!fu"><field name="PARAM_0">N</field></block></next></block></statement><next><block type="controls_repeat_ext" id="-#{el*@ZlfwO)vnv4H{,"><value name="TIMES"><shadow type="math_number" id="~7o;Lj1wuK+W756hOP4z"><field name="NUM">4</field></shadow></value><statement name="DO"><block type="moveSimple" id="EI]-nq7c}cBH2/VJnCy]"><field name="PARAM_0">E</field></block></statement><next><block type="moveSimple" id="]M/5CiU-LiYg6VecjOOk"><field name="PARAM_0">N</field><next><block type="transport" id="km*2[WcpC3e#Mwf*-/ME"><field name="PARAM_0">drop</field></block></next></block></next></block></next></block></next></block></next></block><additional>{}</additional></xml>',
+			blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="Yx#}`-PvOO]HA4c0m7]F" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="forward" id="bi99W4P;N1D:WUIaJ[1."><value name="PARAM_0"><shadow type="math_number" id="Zs}iW}z-b9oK.Q*Eg)09"><field name="NUM">1</field></shadow></value><next><block type="changeRobot" id="WV}RlMe)ip/ao=JWQGb-"><field name="PARAM_0">robot1</field><next><block type="forward" id="NBo.!kN)c4[*t*PsDYVy"><value name="PARAM_0"><shadow type="math_number" id="5*Mt}cA@/[.OHK4@yS9M"><field name="NUM">1</field></shadow></value></block></next></block></next></block></next></block><additional>{}</additional></xml>',
 		},					
 		checkEndEveryTurn: false,		//kako pogosto preverjamo uspešnost rešitve
 		// checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false) },
 		checkEndCondition:  (context, lastTurn) => { 
 			robotEndConditions.checkCombiner(context, lastTurn, [
 				(context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "robot0"}, {category: "green"}) },
-				(context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "marble"}, {category: "green"}) },
+				(context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "robot1"}, {category: "green"}) },
 			])
 		},
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
 		// border: 0.,
 		border: 0,
-		backgroundColour: "white",
-		// backgroundTile: false,
-		backgroundTile: false,
+		// backgroundColour: "white",
+		backgroundTile: "Grass.png",
 		borderColour: "black",
 		showLabels: false,
 
 		cellSide: 60,	
-		numberOfRobots: 1,
+		numberOfRobots: 2,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
 			robot0: { img: "Car.png", side: 60, nbStates: 9, offsetX: -14, zOrder: 8,
 						category: {'robot': true}},
+			robot1: { img: "Caterpillar_transparent.png", nbStates: 1, zOrder: 2, category: {'robot':true, 'transportable':true}, },
 			obstacle: { num: 2, img: "Tree_with_grass.png",  zOrder: 8, category: {'obstacle':true}, },
 			grass: { num: 12, img: "Grass.png", zOrder: 2, category: {'color':true}, },
 			green: { num: 3, img: "School.png", zOrder: 2, category: {'green':true}, },
-			marble: { num: 10, img: "Caterpillar_transparent.png", zOrder: 2, category: {'transportable':true}, },
 			hole: { num: 11, img: "Road_horizontal_with_bus_sign.png", zOrder: 2, category: {'transportable':true}, },
 			cesta_navzgor: { num: 4, img: "Road_vertical.png", zOrder: 2, category: {'color':true}, },
 			cesta_vodoravna: { num: 5, img: "Road_horizontal.png", zOrder: 2, category: {'color':true}, },
@@ -157,17 +157,28 @@ function initTask(subTask) {
 		easy: [
 			{
 				tiles: [
-					[2, 2, 2, 2, 2, 3],
-					[2, 6, 11, 5, 5, 8],
-					[2, 4, 2, 2, 2, 2],
-					[2, 4, 2, 2, 2, 2],
-					[2, 4, 2, 2, 2, 2],
-					[2, 4, 2, 2, 2, 2],
-					[2, 9, 5, 5, 5, 5]
+					[2, 2, 2, 2, 2, 2, 2, 2, 2],
+					[5, 5, 5, 5, 5, 11, 5, 5, 3],
+					[2, 2, 2, 2, 2, 1, 2, 2, 2],
+					[2, 2, 2, 2, 2, 1, 2, 2, 2],
+					[2, 2, 2, 2, 2, 2, 2, 2, 2],
 				],
 			   initItems: [
-					 { row: 6, col: 5, dir: 0, type: "robot0", dir:4},
-					 { row: 4, col: 1, type: "marble" },
+					 { row: 1, col: 0, type: "robot0", dir:0},
+					 { row: 3, col: 5, type: "robot1", dir:6 },
+				  ]
+			},
+			{
+				tiles: [
+					[2, 2, 2, 2, 2, 2, 2, 2, 2],
+					[5, 5, 5, 11, 5, 5, 5, 5, 3],
+					[2, 2, 2, 1, 2, 2, 2, 2, 2],
+					[2, 2, 2, 1, 2, 2, 2, 2, 2],
+					[2, 2, 2, 2, 2, 2, 2, 2, 2],
+				],
+			   initItems: [
+					 { row: 1, col: 0, type: "robot0", dir:0},
+					 { row: 3, col: 3, type: "robot1", dir:6 },
 				  ]
 			}
 		 ],

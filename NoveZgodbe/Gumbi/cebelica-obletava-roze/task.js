@@ -11,8 +11,8 @@ function initTask(subTask) {
 				   actions: "Gibanje",
 				},
 				messages:{
-					itemsExist: "Nisi pobral ves nektar.",
-					itemsDontExist: "Pobral si ves nektar.",
+					itemsExist: "Čebelica ni obiskala vseh štirih cvetic. Poskusi še enkrat.",
+					itemsDontExist: "Čebelica je obiskala vse štiri cvetlice.",
 				},
 				label: {
 					transport: "%1 nektar",
@@ -20,7 +20,7 @@ function initTask(subTask) {
 				options:{
 					tools:{
 						bool:{
-							transportable: "nektar"
+							transportable: "cvetni prah"
 							}
 						}
 				},

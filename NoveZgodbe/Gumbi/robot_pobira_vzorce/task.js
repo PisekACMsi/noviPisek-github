@@ -7,10 +7,8 @@ function initTask(subTask) {
 		languageStrings: {
 			sl: {
 				messages:{
-					itemsDontCoincide: "REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE",
-					itemsCoincide: "Robot je dosegel cilj",
-					itemsExist: "Robot ni pobral vseh vzorcev",
-					itemsDontExist: "Kamenčki grejo brrrrrrrrrrrrrrrr",
+					itemsExist: "Robot ni pobral vseh vzorcev. Poskusi še enkrat.",
+					itemsDontExist: "Robot je pobral vse vzorce.",
 				},
 			},
 		},
@@ -45,14 +43,13 @@ function initTask(subTask) {
 				robot:  [
 					"move",
 					"moveSimple",
-					"sensorBool"
 				],
 				// robot:  ["left","right","north","west","east","south","changeRobot", "pickTransportable","dropTransportable"],
 			},
 			standardBlocks: {
 				includeAll: false,
 				wholeCategories: [],
-				singleBlocks: ["controls_if", "controls_repeat_ext"],
+				singleBlocks: ["controls_repeat_ext"],
 				excludedBlocks: [],
 			},
 		},
@@ -116,49 +113,6 @@ function initTask(subTask) {
 					{ row: 10, col: 9, type: "button", id: 3},
 				],
 			},
-			{
-				tiles: [
-					[1, 1, 2, 2, 2, 21, 21, 2, 2, 21, 21],
-					[21, 1, 1, 1, 1, 1, 1, 1, 1, 1, 21],
-					[21, 21, 21, 1, 1, 21, 21, 1, 1, 1, 21],
-					[21, 6, 6, 1, 1, 1, 1, 1, 1, 1, 21],
-					[1, 1, 2, 2, 2, 21, 21, 1, 2, 2, 21],
-					[1, 6, 6, 6, 1, 1, 1, 1, 6, 1, 2],
-					[1, 2, 2, 1, 21, 21, 1, 1, 1, 1, 2],
-					[21, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-					[21, 1, 21, 21, 21, 2, 2, 1, 2, 1, 2],
-					[21, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1],
-					[21, 1, 1, 21, 21, 21, 1, 21, 21, 1, 2],
-					[2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-					[2, 1, 21, 21, 21, 2, 2, 21, 2, 1, 1],
-					[2, 3, 2, 2, 2, 21, 21, 21, 2, 2, 2],
-				],
-				initItems: [
-					{ row: 0, col: 1, dir: 1, type: "robot0" },
-				],
-			},
-			{
-				tiles: [
-					[1, 1, 2, 2, 2, 21, 21, 1, 1, 2, 2],
-					[2, 6, 1, 1, 6, 1, 1, 1, 1, 1, 21],
-					[2, 2, 2, 21, 2, 21, 21, 21, 21, 1, 21],
-					[1, 1, 1, 6, 1, 1, 1, 1, 1, 1, 21],
-					[2, 1, 2, 2, 2, 21, 21, 21, 2, 2, 21],
-					[2, 1, 6, 1, 1, 6, 1, 1, 1, 1, 2],
-					[2, 2, 2, 21, 21, 21, 21, 21, 21, 1, 2],
-					[21, 1, 1, 1, 1, 1, 1, 1, 6, 1, 2],
-					[2, 1, 21, 21, 21, 21, 21, 21, 2, 2, 2],
-					[2, 1, 1, 1, 1, 1, 1, 6, 1, 6, 2],
-					[2, 2, 2, 21, 2, 21, 21, 21, 21, 1, 21],
-					[1, 6, 6, 6, 6, 6, 1, 1, 1, 1, 21],
-					[2, 1, 2, 2, 2, 21, 21, 21, 2, 21, 21],
-					[2, 3, 2, 2, 2, 21, 21, 21, 2, 2, 2],
-				],
-				initItems: [
-					{ row: 0, col: 1, dir: 1, type: "robot0" },
-				],
-			},
-			
 		 ],
 	};
 

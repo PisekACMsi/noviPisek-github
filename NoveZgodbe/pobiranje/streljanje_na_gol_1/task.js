@@ -25,7 +25,7 @@ function initTask(subTask) {
 	
 				},
 				errors: {
-					obstacle: "Pazi, stožci!"
+					obstacle: "Pazi, stožci!",
 					notTransporting: "Lučka skuša streljati na gol, vendar ni pobrala žoge.",
 				},
 				options:{

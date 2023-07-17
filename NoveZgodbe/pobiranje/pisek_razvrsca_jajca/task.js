@@ -48,8 +48,9 @@ function initTask(subTask) {
 			groupByCategory: true,
 			generatedBlocks: {
 				robot:  [
-					"moveSimple",
-					"transport"
+					"forwardSimple",
+					"transport",
+					"turn",
 				],
 				// robot:  ["left","right","north","west","east","south","changeRobot", "pickTransportable","dropTransportable"],
 			},
@@ -61,27 +62,29 @@ function initTask(subTask) {
 			},
 		},
 		startingExample: { //vnaprej podana koda ukazov
-			blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="?PYegoooe[j?}[Q@H/0J" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="moveSimple" id="KxkOIo,R)eKdK~3TvJ8F"><field name="PARAM_0">S</field><next><block type="moveSimple" id="oF@bL82}Y(#Ek.-!k3[m"><field name="PARAM_0">S</field><next><block type="controls_repeat_ext" id="*Vs8:7pQ9u*tI#*P2|r8"><value name="TIMES"><shadow type="math_number" id="{sh}SHWJeT{=!r!D6.UT"><field name="NUM">2</field></shadow></value><statement name="DO"><block type="moveSimple" id="PMY!s?/M~0/{K2=65W5k"><field name="PARAM_0">E</field><next><block type="transport" id="4.C,Ar@`KIy*Ufy+*Qnd"><field name="PARAM_0">pick</field><next><block type="controls_repeat_ext" id="-r8BS?,4ABz91v-EDN0b"><value name="TIMES"><shadow type="math_number" id="[nLCPfLP2`GBkV|s(]On"><field name="NUM">5</field></shadow></value><statement name="DO"><block type="moveSimple" id="f4{Hm{~a8|}([JOpg+67"><field name="PARAM_0">E</field></block></statement><next><block type="transport" id="_ImVR*vde6OJ(c}#LDzZ"><field name="PARAM_0">drop</field><next><block type="moveSimple" id="|[AB9)rDp4!6!0P{*6C7"><field name="PARAM_0">W</field><next><block type="moveSimple" id="tmYn~vAKuP?;v/gJbMlN"><field name="PARAM_0">W</field><next><block type="moveSimple" id=":!,64yxD4BZqYPJJAQSV"><field name="PARAM_0">W</field><next><block type="transport" id="|s:MNmckXWJiMU##OdXn"><field name="PARAM_0">pick</field><next><block type="moveSimple" id="u@L5vt`hyn2Ja`Tn[3CZ"><field name="PARAM_0">E</field><next><block type="moveSimple" id="y7_-Z]MqW4b4)y!6#XC)"><field name="PARAM_0">E</field><next><block type="moveSimple" id="ESB_0|K@EWZNExhn4jj4"><field name="PARAM_0">E</field><next><block type="transport" id="JX_(d8kTWlpNP]j3b:cG"><field name="PARAM_0">drop</field><next><block type="moveSimple" id="``lcaFW2X0Uz1ATOyd*`"><field name="PARAM_0">W</field><next><block type="moveSimple" id="@1aWb2A3`wGg#)ow5O-Z"><field name="PARAM_0">W</field><next><block type="transport" id="yaB~HzY/TuukCxmG9PyG"><field name="PARAM_0">pick</field><next><block type="moveSimple" id="Vf9rz-g@I,[faLljTyW#"><field name="PARAM_0">E</field><next><block type="moveSimple" id="DBa.Y0SRe@v`T,!Q8)lq"><field name="PARAM_0">E</field><next><block type="transport" id="4to+NnKQrClV#.rw#kHa"><field name="PARAM_0">drop</field><next><block type="controls_repeat_ext" id="s=*+x{@dH,;g`E.v@)us"><value name="TIMES"><shadow type="math_number" id="M0GAAO7|xGq6mM`oC_#Z"><field name="NUM">6</field></shadow></value><statement name="DO"><block type="moveSimple" id="f7Ya=]MpdMlB*vyPo;I?"><field name="PARAM_0">W</field></block></statement><next><block type="moveSimple" id="!pk!|e|26(ekJg?cX];O"><field name="PARAM_0">S</field><next><block type="moveSimple" id="yDpB?=O=d0E@_:SnvQAg"><field name="PARAM_0">S</field></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></next></block></next></block></next></block><additional>{}</additional></xml>',
+			blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="?PYegoooe[j?}[Q@H/0J" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="controls_repeat_ext" id="(HOv}/96_39[W?t8DXxx"><value name="TIMES"><shadow type="math_number" id="u2T=h|dxSQAfCL8,q_kL"><field name="NUM">2</field></shadow></value><statement name="DO"><block type="controls_repeat_ext" id="Z:?rHOWlZ{]_#0Bx=:+_"><value name="TIMES"><shadow type="math_number" id="i1E+#pe/@7SvZj=.=J]o"><field name="NUM">2</field></shadow></value><statement name="DO"><block type="forwardSimple" id="F5]=vSxyZL6TyM;*Fevt"><next><block type="transport" id="IIX8yxQhdq0:f+L-Mv0g"><field name="PARAM_0">pick</field></block></next></block></statement><next><block type="forwardSimple" id="3+cF.?GKm_u+n]6xQ`r8"><next><block type="turn" id="mw~xtg.ZLs9#/f70F[8W"><field name="PARAM_0">-2</field><next><block type="forwardSimple" id="@j|((ovaM+E!g,1a.:w:"><next><block type="forwardSimple" id="9+/}+TH_-rcZ*TCr8JxP"><next><block type="turn" id="A*y74m~BwfQc=jgt#tW}"><field name="PARAM_0">-2</field></block></next></block></next></block></next></block></next></block></next></block></statement></block></next></block><block type="controls_repeat_ext" id="ExzH?1*((5LNjUZ6_8xq" x="218" y="339"><value name="TIMES"><shadow type="math_number" id="}c(J)a]xgno*yH!YWPoQ"><field name="NUM">8</field></shadow></value><statement name="DO"><block type="transport" id="?oH)q*nwt/SDfHj_Ja5H"><field name="PARAM_0">drop</field></block></statement></block><additional>{}</additional></xml>',
 			
 			
 		},					
-		checkEndEveryTurn: true,		//kako pogosto preverjamo uspešnost rešitve
-		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {type: "gnezdo"}, {type: "jajce"}, "value", {}, {}) },
+		checkEndEveryTurn: false,		//kako pogosto preverjamo uspešnost rešitve
+		checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemCoincidence(context, lastTurn, {category: "transportable"}, {category: "hole"}, ['colour']) },
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
-		border: 0.05,
+		border: 0.01,
 		backgroundColour: false,
-		backgroundTile: 'grass2.png',
-		borderColour: false,
+		backgroundTile: 'grass3.png',
+		borderColour: 'lightgreen',
 
 		cellSide: 60,	
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["bee_all_8_sides.png"], side: 80, nbStates: 8, offsetX: -7, zOrder: 8, category: {'robot': true}, },
-			jajce: { num: 3, img: ["egg_red.png", "egg_blue.png"], side:50, zOrder: 8, category: {'transportable':true}, transOrder:0},
-			// gnezdo: {num: 4, colour: ["red", "blue"], zOrder: 1},
-			gnezdo: {num: 4, img: ["nest_red.png", "nest_blue.png"], zOrder: 1},
+			robot0: { img: ["pisek_all_8_sides.png"], side: 80, nbStates: 9, offsetX: -7, zOrder: 8, category: {'robot': true}, },
+			marbleR: { num: 31, img: "egg_red.png", zOrder: 7, category: {'transportable':true}, colour: 'red'},
+			marbleB: { num: 32, img: "egg_blue.png", zOrder: 7, category: {'transportable':true}, colour: 'blue'},
+			holeR: { num: 41, img: "nest_red.png", zOrder: 6, category: {'hole':true}, colour: 'red'},
+			holeB: { num: 42, img: "nest_blue.png", zOrder: 6, category: {'hole':true}, colour: 'blue'},
+			obstacle: {num: 5, img: 'mango_tree_transparent.png', zOrder: 1, category: {'obstacle': true}},
 		}, 
 		ignoreInvalidMoves: false,
 	};
@@ -90,25 +93,15 @@ function initTask(subTask) {
 		easy: [
 			{
 				tiles: [
-					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-					[1, 1, 1, 1, 1, 1, 4, 1, 1, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+					[5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+					[5, 1, 5, 1, 1, 1, 5, 1, 1, 1, 5],
+					[5, 31, 5, 32, 5, 31, 5, 32, 5, 41, 5],
+					[5, 32, 5, 31, 5, 32, 5, 31, 5, 42, 5],
+					[5, 1, 1, 1, 5, 1, 1, 1, 5, 5, 5],
+					[5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
 				],
 				initItems: [
-					{ row: 0, col: 0, value: 0, dir: 2, type: "robot0"},
-					{ row: 4, col: 6, value: 1, type: "gnezdo"},
-					{ row: 4, col: 6, value: 3, type: "gnezdo"},
-					{ row: 4, col: 6, value: 5, type: "gnezdo"},
-					{ row: 2, col: 6, value: 2, type: "gnezdo"},
-					{ row: 2, col: 6, value: 4, type: "gnezdo"},
-					{ row: 4, col: 1, value: 1, type: "jajce"},
-					{ row: 4, col: 3, value: 3, type: "jajce"},
-					{ row: 4, col: 4, value: 5, type: "jajce"},
-					{ row: 2, col: 1, value: 0, type: "jajce"},
-					{ row: 2, col: 3, value: 2, type: "jajce"},
-					{ row: 2, col: 4, value: 4, type: "jajce"},
+					{ row: 1, col: 1, value: 0, dir: 2, type: "robot0"},
 				],
 			},
 		],

@@ -6,22 +6,6 @@ function initTask(subTask) {
 		// but the architecture needs to be the same as: "localLanguageStrings"
 		languageStrings: {
 			sl: {
-				startingBlockName: "Program 2",	
-				categories: {				
-				   actions: "Gibanje",
-				},
-				label: {								
-					changeRobot: "zamenjaj vlogo %1 HAHA", 
-					colour: "LOL %1",
-				},
-				options:{
-					move: {
-					   north: "gor",
-					   south: "dol",
-					   east: "desno",
-					   west: "levo",
-					}
-				},
 				messages:{
 					itemsExist: "Robot ni pobral vseh predmetov",
 					itemsDontExist: "Čestitamo robot je pobral vse predmete",
@@ -50,13 +34,15 @@ function initTask(subTask) {
 		},
 		actionDelay: 400,				//parameter za časovni zamik med izvajanjem ukazov -  ne deulje??
 		blocklyColourTheme: "bwinf",	//izbira seta barv za bloke ukazov
-		maxInstructions: 7,
+		maxInstructions: 0,
 		includeBlocks: {						//dovoljeni ukazi 
 			groupByCategory: true,
 			generatedBlocks: {
 				robot:  [
 					"turn",
-					"forwardSimple"
+					"move",
+					"forward",
+					"transport",
 				],
 				// robot:  ["left","right","north","west","east","south","changeRobot", "pickTransportable","dropTransportable"],
 			},
@@ -68,38 +54,38 @@ function initTask(subTask) {
 			},
 		},
 		startingExample: { //vnaprej podana koda ukazov
-			blockly: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id="Yx#}`-PvOO]HA4c0m7]F" deletable="false" movable="false" editable="false" x="0" y="0"><next><block type="controls_repeat_ext" id="tocy5.4nCklg8jROQdDa"><value name="TIMES"><shadow type="math_number" id=";3v_#182]za@EtCtR@EN"><field name="NUM">4</field></shadow></value><statement name="DO"><block type="forwardSimple" id="dvndEa0d1?KXd?]66?QX"></block></statement><next><block type="turn" id="b.T?kEPNJbGH.pgmHXxr"><field name="PARAM_0">2</field><next><block type="controls_repeat_ext" id="VRkW6Q4a4Na[E|Fk:Z2H"><value name="TIMES"><shadow type="math_number" id="]GL36HTJc2?Qw=lyY;6d"><field name="NUM">6</field></shadow></value><statement name="DO"><block type="forwardSimple" id="FLT[_[LIm078VdkK2K0;"></block></statement></block></next></block></next></block></next></block><additional>{}</additional></xml>',
+			blockly: '',
 		},					
-		checkEndEveryTurn: true,		//kako pogosto preverjamo uspešnost rešitve
+		checkEndEveryTurn: false,		//kako pogosto preverjamo uspešnost rešitve
 		// checkEndCondition:  (context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false) },
 		checkEndCondition:  (context, lastTurn) => { 
 			robotEndConditions.checkCombiner(context, lastTurn, [
-				(context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "coin"}, {}, exist=false) }, 
+				(context, lastTurn) => { robotEndConditions.checkItemExistence(context, lastTurn, {category: "transportable"}, {}, exist=false) }, 
 			])
 		},
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
 		// border: 0.,
-		border: 0.02,
+		border: 0.01,
 		backgroundColour: "pink",
 		// backgroundTile: false,
-		backgroundTile: "tile2.png",
-		borderColour: "black",
+		backgroundTile: "makadamskacesta2_robot.png",
+		borderColour: "brown",
 		showLabels: true,
 
 		cellSide: 60,	
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["green_robot.png", "red_robot.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
+			robot0: { img: "robot_8pogledov.png", side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
 						category: {'robot': true}, },
-			obstacle: { num: 2, img: "ozadje.png",  zOrder: 8, category: {'obstacle':true}, },
-			obstacle2: { num: 3, img: "ozadje_2.png",  zOrder: 8, category: {'obstacle':true}, },
-			pill1: { num: 4, img: "streha.png", zOrder: 2, category: {'coin':true}, },
-			pill2: { num: 5, img: "pogon.png", zOrder: 2, category: {'coin':true}, },
-			pill3: { num: 6, img: "kabina.png", zOrder: 2, category: {'coin':true}, },
-			pill4: { num: 7, img: "volan.png", zOrder: 2, category: {'coin':true}, },
-			pill5: { num: 8, img: "stol.png", zOrder: 2, category: {'coin':true}, },
+			obstacle: { num: 2, img: "kamni_robot.png",  zOrder: 8, category: {'obstacle':true}, },
+			obstacle2: { num: 3, img: "pesek s kamni_robot.png",  zOrder: 8, category: {'obstacle':true}, },
+			marble1: { num: 41, img: "gorilnik rakete.png", zOrder: 2, category: {'transportable':true}, transOrder: 0 },
+			marble2: { num: 42, img: "KOS RAKETE 2.png", zOrder: 2, category: {'transportable':true}, transOrder: 1 },
+			marble3: { num: 43, img: "KOS RAKETE 3.png", zOrder: 2, category: {'transportable':true}, transOrder: 2 },
+			marble4: { num: 44, img: "trup rakete.png", zOrder: 2, category: {'transportable':true}, transOrder: 3 },
+			marble5: { num: 45, img: "vrh rakete.png", zOrder: 2, category: {'transportable':true}, transOrder: 4 },
 		}, 
 		ignoreInvalidMoves: false,
 	};
@@ -108,14 +94,13 @@ function initTask(subTask) {
 		easy: [
 			{
 				tiles: [
-					[2, 1, 1, 1, 1, 1, 1, 1],
-					[2, 1, 1, 1, 4, 1, 5, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1],
-					[3, 1, 1, 1, 1, 1, 6, 1],
+					[2, 2, 3, 1, 1, 1, 3, 2],
+					[2, 3, 1, 1, 41, 1, 42, 3],
 					[3, 1, 1, 1, 1, 1, 1, 1],
-					[2, 1, 1, 1, 1, 1, 7, 1],
-					[1, 1, 1, 1, 1, 1, 8, 1],
-					[2, 1, 1, 1, 1, 1, 1, 1]
+					[2, 3, 1, 1, 1, 1, 43, 1],
+					[2, 2, 3, 1, 1, 1, 1, 1],
+					[2, 3, 1, 1, 44, 1, 45, 3],
+					[3, 1, 1, 1, 1, 1, 3, 2],
 				 ],
 			   initItems: [
 					 { row: 1, col: 2, dir: 0, type: "robot0" }

@@ -191,8 +191,8 @@ function initTask(subTask) {
 			number: { zOrder: 2, id: 1, category: {'number':true},  },
 			obstacle: { num: 2, img: "obstacle1.png",  zOrder: 8, category: {'obstacle':true}, },
 			coin: { num: 5, img: "coin.png", zOrder: 2, category: {'coin':true}, },
-			paint: { num: 3, zOrder: 3, colour: "magenta", },
-			paintC: { num: 3, zOrder: 3, colour: ["magenta",'blue','#33ff33'], },
+			paint: { num: 3, zOrder: 3, colour: "magenta" },
+			paintC: { num: 31, zOrder: 3, colour: ["magenta",'blue','#33ff33'], },
 			button: {num: 4, img: ["pressure_off.png","pressure_on.png"], id:1, zOrder: 1, category: {'button':true}, },
 			door: {num: 6, img: ["door_a.png","door_b.png"], id:1, zOrder: 1, category: [{'obstacle':true}, {}], },
 			marble1: {num: 8, img: "marble.png", zOrder: 2, transOrder: 0, category: {'transportable':true}, },
@@ -206,8 +206,8 @@ function initTask(subTask) {
 		easy: [
 			{
 				tiles: [
-					[2, 2, 3, 2, 1, 1, 1],
-					[1, 1, 8, 1, 8, 2, 1],
+					[2, 2, 31, 2, 1, 1, 1],
+					[1, 1, 8, 1, 8, 2, 3],
 					[1, 1, 10, 10, 10, 10, 1],
 					[1, 1, 6, 6, 4, 1, 5],
 					[1, 1, 1, 2, 1, 1, 5],

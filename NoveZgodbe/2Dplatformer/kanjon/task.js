@@ -86,7 +86,7 @@ function initTask(subTask) {
 			robot0: { img: ["cowboy_all_8_sides.png"], side: 80, nbStates: 8, offsetX: -14, zOrder: 8,
 						category: {'robot': true}, },
 			obstacle: { num: 2, img: "Dirt.png",  zOrder: 8, category: {'obstacle':true}, },
-			obstacle2: { num: 3, img: "rock_formation_with_dirt.png",  zOrder: 8, category: {'obstacle':true}, },
+			obstacle2: { num: 3, img: "Rock_formation_with_dirt.png",  zOrder: 8, category: {'obstacle':true}, },
 			goal: { num: 5, img: "Flag2.png", zOrder: 2, category: {'goal':true}, },
 			back1: { num: 4, img: "land.png", zOrder: 2},
 			coin: {num: 6, img: "star.png", zOrder: 3, category: {'coin':true} },

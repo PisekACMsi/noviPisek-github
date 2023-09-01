@@ -1,5 +1,13 @@
 function initTask(subTask) {
     subTask.gridInfos = {				//podatki za urejevalnik in vizualno 
+		userTaskData: {
+			title: document.title,
+			subject: $(".exerciseText").first().text(),
+			about: {
+				authors: "Razvojna skupina Pišek",
+				license: "CC BY-NC 4.0",
+			}
+		},
 		// local library
 		// CUSTOM: here you can override the translation from blocklyRobot_lib.js
 		// the dictionary tree can be incomplete (have missing values),

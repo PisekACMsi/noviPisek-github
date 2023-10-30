@@ -610,8 +610,8 @@ var quickAlgoLanguageStrings = {
          colour: "Barve",
          dicts: "Slovarji",
          input: "Vnos",
-         lists: "Tabele",
-         tables: "2D Tabele",
+         lists: "Seznami",
+         tables: "Tabele",
          logic: "Logika",
          loops: "Zanke",
          control: "Nadzor",
@@ -625,8 +625,8 @@ var quickAlgoLanguageStrings = {
          turtle: "Grafika"
       },
       exerciseTypeAbout: {
-         default: "Task powered by <a href='http://www.france-ioi.org/'>France-IOI</a>", // TODO: translate
-         "Quick-Pi": "<a href='https://quick-pi.org/'>Quick-Pi</a> is a project by " +
+         default: "Naloga podprta s pomočjo <a href='http://www.france-ioi.org/'>France-IOI</a>", // TODO: translate
+         "Quick-Pi": "<a href='https://quick-pi.org/'>Quick-Pi</a> projekt od " +
              "<a href='http://www.france-ioi.org/'>France-IOI</a>" // TODO: translate
       },
       invalidContent: "Neveljavna vsebina",

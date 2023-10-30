@@ -4,7 +4,7 @@ function initTask(subTask) {
 			title: document.title,
 			subject: $(".exerciseText").first().text(),
 			about: {
-				authors: "Razvojna skupina Pišek",
+				authors: "Razvojna skupina <a href='mailto:pisek@acm.si'>Pišek</a>",
 				license: "CC BY-NC 4.0",
 			}
 		},

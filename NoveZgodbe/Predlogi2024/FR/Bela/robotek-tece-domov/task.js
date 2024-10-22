@@ -19,8 +19,8 @@ function initTask(subTask) {
 				   actions: "Gibanje",
 				},
 				messages:{
-					itemsExist: "Robotek ni pobral vseh zvezdic",
-					itemsDontExist: "Robotek je pobral vse zvezdice",
+					itemsExist: "Robotek ni prišel domov",
+					itemsDontExist: "Robotek je doma",
 				},
 	
 			},
@@ -49,13 +49,13 @@ function initTask(subTask) {
 		},
 		actionDelay: 400,				//parameter za časovni zamik med izvajanjem ukazov -  ne deulje??
 		blocklyColourTheme: "bwinf",	//izbira seta barv za bloke ukazov
-		maxInstructions: 10,
+		maxInstructions: 5,
 		includeBlocks: {						//dovoljeni ukazi 
 			groupByCategory: true,
 			generatedBlocks: {
 				robot:  [
-					//"move",
-					"forwardSimple",
+					//"moveSimple",
+					"forwardSimple",		//vse smeri + zanke
 					"turn",     //samo desno
 					//"turnAround",
 					
@@ -77,17 +77,17 @@ function initTask(subTask) {
 		computeGrade: robotGradeFunctions.allOrNothing,
 			
 		border: 0.05,
-		backgroundColour: "pink",
+		backgroundColour: "white",
 		backgroundTile: false,
 		borderColour: "grey",
 
-		cellSide: 80,	
+		cellSide: 60,	
 		numberOfRobots: 1,
 		// only categories: robot, obstacle, transportable, coin, button --> are HARDCODED
 		itemTypes: {
-			robot0: { img: ["green_robot2.png"], side: 80, nbStates: 9, zOrder: 8, category: {'robot': true}, },
-			//obstacle: { num: 2, img:["dirt.png"], zOrder: 1, category: {'obstacle': true}},
-			coin: {num:3, img:["star.png"],zOrder: 8, category:{"coin":true}},
+			robot0: { img: ["green_robot2.png"], side: 60, nbStates: 9, zOrder: 8, category: {'robot': true}, },
+			obstacle: { num: 2, img:["dirt.png"], zOrder: 1, category: {'obstacle': true}},
+			coin: {num:3, img:["finish2.png"],zOrder: 8, category:{"coin":true}},
 		},
 
 		ignoreInvalidMoves: false,
@@ -97,21 +97,18 @@ function initTask(subTask) {
 		easy: [
 			{
 				tiles: [
-					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1, 3, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1, 3, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1, 3, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1, 3, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-					[1, 1, 3, 3, 1, 3, 3, 3, 3, 1],
-					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-					
-						
+					[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+					[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+					[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+					[2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 2, 2],
+					[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+					[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+					[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+											
 					
 				],
 				initItems: [
-					{ row: 7, col: 0, dir: 0, type: "robot0" },
+					{ row: 3, col: 1, dir: 0, type: "robot0" },
 
 				],
 			},

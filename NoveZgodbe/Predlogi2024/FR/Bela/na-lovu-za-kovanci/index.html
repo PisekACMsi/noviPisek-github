@@ -2,7 +2,7 @@
 <html>
    <head>
 		<meta charset="utf-8">	<!-- določimo način kodiranja znakov v besedilu naloge -->
-		<title>robotek-pobira-zvezdice-1-zanke</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
+		<title>na-lovu-za-kovanci</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
 		<script>
 			window.stringsLanguage = 'sl'; //izberemo jezik za besedila ukazov in sporočil
 		</script>
@@ -37,9 +37,9 @@
 		</script>
 			
 		<!-- Pot do grafik -->	
-		<script> var imgPath=""; </script>
+		<script> var imgPath="../../../../../_graphics/pixelated/"; </script>
 		<!-- Tukaj uvozimo knjiznico -->	
-		<script class="remove" type="text/javascript" src="blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
+		<script class="remove" type="text/javascript" src="../../../../../_library/blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
 		<!-- Tukaj kličemo datoteko, kjer definiramo problem naloge -->		
 		<script type="text/javascript" src="task.js"></script>
 		<script>
@@ -50,12 +50,12 @@
     
 	<body onresize="task.displayedSubTask.updateScale()">
 		<div id="task">
-            <h1>Robotek pobira zvezdice 2</h1>  <!-- Naslov naloge -->
+            <h1>Na lovu za kovanci </h1>  <!-- Naslov naloge -->
 			<div id="tabsContainer"></div>
 			<div id="taskContent">
 				<div id="taskIntro"> <!-- Besedilo naloge -->
 					<p>
-						Znaš sestaviti program, ki bo robotka usmeril na vsa  polja z zvezdicami, tako, da boš v programu uporabil le dva delčka “premakni se naprej”  
+						Pomagaj robotku poiskati ter pobrati kovance. Morda boš potreboval zanke. 
 					</p>
 				</div>
 				<div id="gridContainer"></div>

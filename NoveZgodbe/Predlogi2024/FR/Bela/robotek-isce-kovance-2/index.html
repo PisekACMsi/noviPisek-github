@@ -2,16 +2,16 @@
 <html>
    <head>
 		<meta charset="utf-8">	<!-- določimo način kodiranja znakov v besedilu naloge -->
-		<title>jezek-nabira-hruske</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
+		<title>robotek-isce-kovance-2 </title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
 		<script>
 			window.stringsLanguage = 'sl'; //izberemo jezik za besedila ukazov in sporočil
 		</script>
 			
 		<!-- Tukaj kličemo knjižnice potrebne za delovanje spletne strani -->
-		<script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script> 
+		<script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script> 
 		<!-- <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.5.js" id="import-modules"></script>  -->
 		<script class="remove" type="text/javascript">
-			var modulesPath = '../../../../../../_common/modules/'
+			var modulesPath = '../../../../../_common/modules/'
 			importModules([
 				'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
 				'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
@@ -37,9 +37,9 @@
 		</script>
 			
 		<!-- Pot do grafik -->	
-		<script> var imgPath=""; </script>
+		<script> var imgPath="../../../../../_graphics/pixelated/"; </script>
 		<!-- Tukaj uvozimo knjiznico -->	
-		<script class="remove" type="text/javascript" src="blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
+		<script class="remove" type="text/javascript" src="../../../../../_library/blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
 		<!-- Tukaj kličemo datoteko, kjer definiramo problem naloge -->		
 		<script type="text/javascript" src="task.js"></script>
 		<script>
@@ -50,14 +50,12 @@
     
 	<body onresize="task.displayedSubTask.updateScale()">
 		<div id="task">
-            <h1>Pižek nabira hruške</h1>  <!-- Naslov naloge -->
+            <h1>Robotek išče kovance</h1>  <!-- Naslov naloge -->
 			<div id="tabsContainer"></div>
 			<div id="taskContent">
 				<div id="taskIntro"> <!-- Besedilo naloge -->
 					<p>
-						Jež se pripravlja na zimo. Zato je ves zadovoljen, ko v hruškovem sadovnjaku opazi na tleh vse polno hrušk.  
-
-Sestavi mu načrt gibanja in pri tem upoštevaj smeri neba. Da pobere hruško je dovolj, da se pojavi na ustreznem kvadratku in hruška se bo ujela na njegove bodice. Program je pravzaprav že narejen, le funkcija Premik še manjka!  
+						Pomagaj robotku poiskati ter pobrati vse kovance. 
 					</p>
 				</div>
 				<div id="gridContainer"></div>
